@@ -1,0 +1,439 @@
+/* Ported from kavish3D-Portofolio (MIT, (c) Rajesh Chityal) */
+.landing-section {
+  width: 100%;
+  max-width: var(--cMaxWidth);
+  margin: auto;
+  position: relative;
+  height: 115svh;
+  background-color: rgba(153, 157, 158, 1);
+  overflow: hidden;
+}
+
+.landing-container {
+  width: var(--cWidth);
+  margin: auto;
+  height: 100%;
+  position: relative;
+  max-width: var(--cMaxWidth);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 5%;
+  padding-top: 10%;
+  box-sizing: border-box;
+}
+
+.landing-video,
+.landing-image {
+  position: absolute;
+  bottom: 0;
+  height: 95%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.landing-image img {
+  height: 100%;
+  z-index: 2;
+  position: relative;
+}
+
+.character-rim {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  z-index: 1;
+  background-color: #22d3ee;
+  box-shadow: inset 66px 35px 85px 0px rgba(0, 180, 180, 0.65);
+  filter: blur(50px);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%) scale(1.4);
+  opacity: 0;
+}
+
+.character-model {
+  height: 80vh;
+  position: absolute;
+  max-width: 1920px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  bottom: 50px;
+  pointer-events: inherit;
+}
+
+.character-model::after {
+  content: "";
+  width: 100vw;
+  height: 250px;
+  background-image: linear-gradient(to bottom,
+      transparent,
+      rgba(153, 157, 158, 1) 70%);
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  position: absolute;
+}
+
+.character-model::before {
+  content: "";
+  width: 100vw;
+  height: 700px;
+  background-color: rgba(153, 157, 158, 1);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  position: absolute;
+}
+
+.character-loaded .character-rim {
+  animation: backlight 3s forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.character-model canvas {
+  display: block;
+  position: relative;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.character-hover {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.landing-info {
+  z-index: 9;
+  text-align: left;
+}
+
+.landing-info h3 {
+  font-size: 22px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  color: var(--accentColor);
+  margin: 0;
+}
+
+.landing-arrow {
+  font-size: 51px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 52px;
+  line-height: 1;
+}
+
+.landing-info h2 {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.02em;
+}
+
+.landing-h2-info-1 {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.landing-h2-info {
+  z-index: 1;
+}
+
+h2.landing-info-h2 {
+  color: #14b8a6;
+  font-size: 42px;
+  width: 120%;
+  margin: 0;
+  font-family: "Syne", sans-serif;
+  font-weight: 600;
+  position: relative;
+  margin-left: -5px;
+  z-index: 1;
+}
+
+.landing-h2-2 {
+  position: absolute;
+  top: 0;
+}
+
+.landing-info-h2::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  z-index: 3;
+  background-image: linear-gradient(0deg,
+      var(--backgroundColor) 40%,
+      rgba(0, 0, 0, 0) 110%);
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 500px) {
+  .character-model {
+    z-index: 0;
+  }
+
+  .landing-info h2 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .character-model {
+    height: 80vh;
+  }
+
+  .landing-info h2 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .landing-container {
+    padding-top: 4%;
+  }
+
+  /* Above the marquee (z-index 50) so the scrolling name passes behind
+     the character, matching desktop stacking. */
+  .character-model {
+    height: 94vh;
+    bottom: 0;
+    z-index: 51;
+  }
+
+  /* Keep hero text above the character's bottom fade gradient. */
+  .landing-info {
+    z-index: 52;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .character-model {
+    height: 100vh;
+    bottom: 0;
+    z-index: 60;
+    position: fixed;
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+
+  .character-model::after,
+  .character-model::before {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+}
+
+@media screen and (min-width: 1600px) {
+  .landing-info h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+
+/* ── Location Card ── */
+.location-card {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-75%);
+  left: 0;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #0c0c0c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: none;
+  border-radius: 0 80px 80px 0;
+  padding: 22px 22px 22px 32px;
+  pointer-events: none;
+  min-width: 240px;
+}
+
+.location-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  gap: 1px;
+  padding-left: 30px;
+}
+
+.location-text span {
+  font-size: 19px;
+  color: #eae5ec;
+  font-weight: 500;
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.2px;
+  display: block;
+}
+
+.location-globe {
+  width: 68px;
+  height: 68px;
+  background: rgba(153, 157, 158, 1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  flex-shrink: 0;
+}
+
+@media only screen and (max-width: 700px) {
+  .landing-info {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    text-align: left;
+  }
+
+  .landing-info h2 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .landing-arrow {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .location-card {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .location-card {
+    padding: 16px 16px 16px 24px;
+    min-width: 200px;
+  }
+
+  .location-text span {
+    font-size: 14px;
+  }
+
+  .location-globe {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ── Short-viewport fix: prevent marquee/location-card/hero-text collision
+   when the window is resized short (fixed px offsets stop scaling with
+   height while other elements are positioned as % of section height) ── */
+@media screen and (max-height: 700px) {
+  .name-marquee {
+    bottom: 50px;
+  }
+
+  .marquee-track span {
+    font-size: clamp(40px, 8vw, 90px);
+  }
+}
+
+@media screen and (max-height: 700px) and (min-width: 701px) {
+  .landing-container {
+    padding-top: 6%;
+  }
+
+  /* Not enough vertical room for the card above the marquee at this
+     height — same treatment as the narrow-width breakpoint. */
+  .location-card {
+    display: none;
+  }
+}
+
+/* ── Digital Ball Globe ── */
+.digital-ball {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.digital-ball .overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 32%, rgba(255, 255, 255, 0.08), transparent 65%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.digital-ball .globe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  perspective: 200px;
+}
+
+.digital-ball .globe-wrap {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: globe-spin 7s linear infinite;
+}
+
+/* Three meridian rings at 0°, 60°, 120° */
+.digital-ball .circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform-style: preserve-3d;
+}
+
+.digital-ball .circle:nth-child(1) { transform: rotateY(0deg); }
+.digital-ball .circle:nth-child(2) { transform: rotateY(60deg); }
+.digital-ball .circle:nth-child(3) { transform: rotateY(120deg); }
+
+/* Latitude rings */
+.digital-ball .circle-hor {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transform: rotateX(70deg);
+}
+
+.digital-ball .circle-hor-middle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  transform: rotateX(90deg);
+}
+
+@keyframes globe-spin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}

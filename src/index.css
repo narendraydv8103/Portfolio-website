@@ -1,0 +1,598 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Syne:wght@400..800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --color-studio-bg: #08080a;
+  --color-studio-surface: #101014;
+  --color-studio-card: #16161c;
+  --color-studio-border: rgba(255, 255, 255, 0.08);
+
+  --color-studio-gold: #f59e0b;
+  --color-studio-cream: #eae5ec;
+  --color-accent-teal: #5eead4;
+  --color-accent-emerald: #10b981;
+  --color-accent-amber: #f97316;
+  --color-accent-violet: #a855f7;
+  --color-accent-cyan: #2dd4bf;
+}
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-mono: "DM Sans", sans-serif;
+
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+  color: #eae5ec;
+  background-color: var(--backgroundColor);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  --accentColor: #5eead4;
+  --backgroundColor: #0a0e17;
+  --vh: 100vh;
+  --vh: 100svh;
+  --sidebarW: 0px;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display, .font-syne {
+  font-family: 'Syne', sans-serif !important;
+  font-kerning: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'DM Sans', sans-serif;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  height: auto;
+  background-color: #050810;
+  flex-grow: 1;
+  --cWidth: calc(100% - 30px);
+  --cMaxWidth: 1920px;
+  max-width: 100vw;
+  overflow-x: hidden;
+  color: #eae5ec;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* 3D Perspective Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.depth-z-10 {
+  transform: translateZ(10px);
+}
+
+.depth-z-20 {
+  transform: translateZ(20px);
+}
+
+.depth-z-30 {
+  transform: translateZ(30px);
+}
+
+.depth-z-40 {
+  transform: translateZ(40px);
+}
+
+.depth-z-50 {
+  transform: translateZ(50px);
+}
+
+/* Studio Glass & Surface Utilities */
+.glass-panel {
+  background: rgba(17, 17, 21, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(22, 22, 27, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.65);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 24px 48px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(180deg, #ffffff 0%, #e4e4e7 60%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-subtle {
+  background: linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Keyframes */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4.5s ease-in-out infinite;
+}
+
+/* Subtle dot grid pattern */
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* 3D Wireframe Spinning Globe (Matching Reference Frame 00:02) */
+.digital-ball {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.digital-ball .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 32%, rgba(255, 255, 255, 0.2), transparent 65%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.digital-ball .globe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38px;
+  height: 38px;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  perspective: 200px;
+}
+
+.digital-ball .globe-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  animation: globe-spin 8s linear infinite;
+}
+
+.digital-ball .circle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  transform-style: preserve-3d;
+}
+
+.digital-ball .circle:nth-child(1) {
+  transform: rotateY(0deg);
+}
+
+.digital-ball .circle:nth-child(2) {
+  transform: rotateY(60deg);
+}
+
+.digital-ball .circle:nth-child(3) {
+  transform: rotateY(120deg);
+}
+
+.digital-ball .circle-hor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transform: rotateX(70deg);
+}
+
+.digital-ball .circle-hor-middle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  transform: rotateX(90deg);
+}
+
+@keyframes globe-spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Continuous Velocity Marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track-continuous {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-continuous:hover {
+  animation-play-state: paused;
+}
+
+/* Reference Circular "About me" Button */
+.about-circle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  color: #eae5ec;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, color 0.3s ease, transform 0.3s ease;
+  will-change: transform;
+}
+
+.about-circle-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  background: #5eead4;
+  transform: scale(0);
+  transition: transform 0.5s cubic-bezier(0.7, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.about-circle-btn:hover {
+  border-color: #5eead4;
+  color: #08080a;
+  transform: scale(1.06);
+}
+
+.about-circle-btn:hover:before {
+  transform: scale(1);
+}
+
+.about-circle-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Reference Career / Journey Timeline Styles ─── */
+.career-timeline-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1rem;
+  transform: translateX(-50%);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .career-timeline-track {
+    left: 50%;
+  }
+}
+
+.career-timeline-fill {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(to bottom, #14b8a6 0%, #5eead4 85%, #a5f3fc 100%);
+  box-shadow: 0 0 10px 1px #5eead4, 0 0 22px 3px rgba(94, 234, 212, 0.45);
+  pointer-events: none;
+  z-index: 2;
+  will-change: height;
+}
+
+@media (min-width: 640px) {
+  .career-timeline-fill {
+    left: 50%;
+  }
+}
+
+.career-traveling-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid #5eead4;
+  box-shadow: 0 0 12px 3px #5eead4, 0 0 28px 8px #2dd4bf, 0 0 50px 16px rgba(94, 234, 212, 0.5);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, transform;
+}
+
+.career-traveling-glow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.5) 0%, rgba(20, 184, 166, 0.2) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.journey-node-pin {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.journey-node-pin.active {
+  border-color: #5eead4;
+  box-shadow: 0 0 14px 2px #5eead4, 0 0 26px 4px rgba(94, 234, 212, 0.4);
+}
+
+.journey-node-dot {
+  background-color: #52525b;
+  transition: background-color 0.3s ease;
+}
+
+.journey-node-pin.active .journey-node-dot {
+  background-color: #5eead4;
+  box-shadow: 0 0 6px #5eead4;
+}
+
+.journey-card-wrapper {
+  will-change: transform, opacity;
+}
+
+.journey-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journey-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(94, 234, 212, 0.3);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+/* ── Fixed "WHAT I DO" Section (desktop only, revealed during tl2, exits in tl3) ── */
+.what-i-do-desktop {
+  position: fixed;
+  inset: 0;
+  z-index: 65;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.what-i-do-heading {
+  font-family: 'Syne', sans-serif;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  user-select: none;
+}
+
+.what-i-do-card {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.what-i-do-card:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+/* ── Hero Right-Side Introductory Content (Studio Lead) ── */
+.hero-right-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  padding-right: 5vw;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.hero-right-content {
+  width: 100%;
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  user-select: text;
+}
+
+.hero-right-heading {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: clamp(30px, 2.5vw, 44px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+}
+
+.hero-right-sub {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(16px, 1.1vw, 20px);
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0 0 36px 0;
+  max-width: 580px;
+}
+
+.about-circle-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .hero-right-container {
+    justify-content: center;
+    padding: 80px 24px;
+    height: auto;
+    min-height: 70vh;
+  }
+  .hero-right-content {
+    max-width: 540px;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-right-heading {
+    font-size: 28px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .hero-right-sub {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 30px;
+  }
+}
+

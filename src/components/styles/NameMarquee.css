@@ -1,0 +1,36 @@
+
+/* Sits at the bottom of the hero section as an absolute element.
+   Scrolls away naturally with the landing section. */
+.name-marquee {
+  position: absolute;
+  bottom: 170px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  line-height: 7;
+  z-index: 50;
+}
+
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.marquee-track span {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(72px, 10.5vw, 155px);
+  font-weight: 800;
+  color: rgba(234, 229, 236, 0.78);
+  letter-spacing: -3px;
+  padding-right: 0;
+  line-height: 0.95;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 768px) {
+  .marquee-track span {
+    letter-spacing: -2px;
+  }
+}

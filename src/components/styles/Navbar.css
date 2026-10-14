@@ -1,0 +1,357 @@
+/* Ported from kavish3D-Portofolio (MIT, (c) Rajesh Chityal) */
+/* ── Top navbar (shows before scroll) ── */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 44px;
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.top-navbar.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-14px);
+}
+
+/* Logo / copyright — left */
+.top-navbar-logo {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #eae5ec;
+  display: inline-flex;
+  align-items: center;
+  height: auto;
+  overflow: visible;
+}
+
+.logo-symbol {
+  flex-shrink: 0;
+}
+
+.logo-texts {
+  position: relative;
+  display: inline-block;
+}
+
+/* "Code by Neeraj" — collapses right→left into © on hover */
+.logo-codeby {
+  display: inline-block;
+  white-space: nowrap;
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path 0.75s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.logo-codeby.out {
+  clip-path: inset(0 100% 0 0);
+}
+
+/* "Neeraj Yadav" — reveals left→right on hover */
+.logo-kavish {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.75s 0.08s cubic-bezier(0.7, 0, 0.2, 1);
+  color: var(--accentColor);
+}
+.logo-kavish.in {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* Nav links — right */
+.top-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+@media screen and (max-width: 700px) {
+  .top-navbar-links {
+    display: none;
+  }
+
+  .btn-hamburger {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    transform: translateY(0) !important;
+  }
+}
+
+.top-nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #eae5ec;
+  padding: 6px 0 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  /* magnetic — gsap handles transform, just ensure no layout shift */
+  will-change: transform;
+}
+
+/* active dot under top-nav links */
+.top-nav-link .top-active-dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #eae5ec;
+  opacity: 0;
+  scale: 0;
+  transition: opacity 0.25s ease, scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.top-nav-link.active .top-active-dot,
+.top-nav-link:hover .top-active-dot {
+  opacity: 1;
+  scale: 1;
+}
+
+/* ── Hamburger button (shows after scroll) ── */
+.btn-hamburger {
+  position: fixed;
+  top: 20px;
+  right: 28px;
+  z-index: 1000;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(14, 14, 14, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease,
+    border-color 0.3s ease, scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+}
+
+.btn-hamburger.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.btn-hamburger:hover {
+  background: rgba(30, 30, 30, 0.98);
+  border-color: var(--accentColor);
+  scale: 1.1;
+  box-shadow: 0 0 18px rgba(94, 234, 212, 0.2);
+}
+
+.btn-hamburger.menu-open:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
+}
+
+.btn-hamburger .bar {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #eae5ec;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.btn-hamburger.menu-open .bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.btn-hamburger.menu-open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.btn-hamburger.menu-open .bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Overlay ── */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 990;
+  background: linear-gradient(
+    to right,
+    hsla(220, 13%, 0%, 0.25) 30%,
+    hsla(220, 13%, 0%, 0.85) 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Side drawer ── */
+.side-nav {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: clamp(340px, 40vw, 540px);
+  background: #0c0c0c;
+  padding: 12vh 8vw 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 995;
+  transform: translateX(calc(100% + 6vw));
+  transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.side-nav.active {
+  transform: translateX(0);
+}
+
+/* ── Section headings ── */
+.nav-heading {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #555;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+  font-weight: 500;
+}
+
+/* ── Sidebar nav links ── */
+.nav-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  padding: 0.1rem 0;
+  text-align: left;
+  font-family: inherit;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.18;
+  color: #eae5ec;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  transform: translateX(7vw);
+  transition:
+    transform 0.75s cubic-bezier(0.7, 0, 0.2, 1),
+    opacity 0.65s ease,
+    color 0.25s ease;
+  letter-spacing: -0.02em;
+  will-change: transform;
+}
+
+.side-nav.active .nav-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-link:hover {
+  color: #eae5ec;
+}
+
+/* dot in front of sidebar links */
+.nav-link .side-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #eae5ec;
+  flex-shrink: 0;
+  margin-right: 0;
+  transform: scale(0) translateX(-12px);
+  opacity: 0;
+  transition:
+    transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.22s ease,
+    margin-right 0.28s ease;
+}
+
+.nav-link:hover .side-dot,
+.nav-link.active .side-dot {
+  transform: scale(1) translateX(0);
+  opacity: 1;
+  margin-right: 14px;
+}
+
+/* ── Social links ── */
+.nav-socials {
+  gap: 0;
+}
+
+.nav-social-link {
+  font-size: 1rem;
+  color: #666;
+  text-decoration: none;
+  padding: 0.3rem 0;
+  display: block;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateX(4vw);
+  transition:
+    transform 0.65s cubic-bezier(0.7, 0, 0.2, 1),
+    opacity 0.55s ease,
+    color 0.25s ease;
+}
+
+.side-nav.active .nav-social-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-social-link:hover {
+  color: #eae5ec;
+}
+
+/* ── Side drawer on small phones ── */
+@media screen and (max-width: 480px) {
+  .side-nav {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14vh 10vw 8vh;
+    transform: translateX(100%);
+  }
+
+  .nav-link {
+    font-size: clamp(2.4rem, 13vw, 3.4rem);
+  }
+
+  .nav-heading {
+    margin-bottom: 1.2rem;
+  }
+}
