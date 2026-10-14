@@ -10,6 +10,7 @@ import { StudioWhatICanBuild } from './sections/StudioWhatICanBuild';
 import { StudioSkillsSpatial } from './sections/StudioSkillsSpatial';
 import { StudioProjectsJourney } from './sections/StudioProjectsJourney';
 import { StudioJourney } from './sections/StudioJourney';
+import { StudioPhotoGallery } from './sections/StudioPhotoGallery';
 import { StudioContact } from './sections/StudioContact';
 import { FloatingChatbot } from './components/FloatingChatbot';
 
@@ -104,6 +105,7 @@ export function App() {
               activeProjectIndex={activeProjectIndex}
             />
             <StudioJourney />
+            <StudioPhotoGallery />
             <StudioContact />
           </div>
         </div>
