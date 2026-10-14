@@ -19,18 +19,20 @@
 }
 
 .marquee-track span {
-  font-family: "Syne", sans-serif;
-  font-size: clamp(72px, 10.5vw, 155px);
-  font-weight: 800;
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 9vw, 8rem);
+  font-weight: 700;
   color: rgba(234, 229, 236, 0.78);
-  letter-spacing: -3px;
+  letter-spacing: -0.02em;
   padding-right: 0;
-  line-height: 0.95;
+  line-height: 1.05;
   display: inline-block;
+  text-transform: none;
+  font-variant-numeric: lining-nums;
 }
 
 @media only screen and (max-width: 768px) {
   .marquee-track span {
-    letter-spacing: -2px;
+    letter-spacing: -0.02em;
   }
 }

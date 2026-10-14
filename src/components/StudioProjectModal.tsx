@@ -38,6 +38,11 @@ export const StudioProjectModal: React.FC<StudioProjectModalProps> = ({ project,
             <span className="text-xs font-sans font-medium text-zinc-400">
               {project.category}
             </span>
+            {project.statusTag && (
+              <span className="text-[10px] font-sans font-semibold px-2 py-0.5 rounded bg-white/5 text-zinc-300 border border-white/10">
+                {project.statusTag}
+              </span>
+            )}
             <span className="text-zinc-600">•</span>
             <span className="text-xs font-sans font-medium text-zinc-400">
               Project {project.number} of 05

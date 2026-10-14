@@ -68,7 +68,7 @@ export const StudioAbout: React.FC = () => {
               {/* Photo Frame */}
               <div className="w-full rounded-2xl overflow-hidden bg-zinc-950/80 border border-white/5 flex items-center justify-center">
                 <img
-                  src="/images/WhatsApp%20Image%202026-10-08%20at%2012.56.55%20PM.jpeg"
+                  src="/images/neeraj.jpg"
                   alt="Narendra Singh Yadav holding Academic Award at IPS Academy, Indore"
                   className="w-full h-auto max-h-[720px] object-contain rounded-2xl"
                   loading="lazy"

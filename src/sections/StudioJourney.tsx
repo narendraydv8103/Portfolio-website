@@ -180,9 +180,8 @@ export const StudioJourney: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className={`journey-milestone-item relative flex flex-col sm:flex-row items-start ${
-                    isEven ? 'sm:flex-row-reverse' : ''
-                  } gap-6 sm:gap-12 pl-10 sm:pl-0`}
+                  className={`journey-milestone-item relative flex flex-col sm:flex-row items-start ${isEven ? 'sm:flex-row-reverse' : ''
+                    } gap-6 sm:gap-12 pl-10 sm:pl-0`}
                 >
                   {/* Central Node Pin */}
                   <div className="journey-node-pin absolute left-4 sm:left-1/2 top-5 -translate-x-1/2 w-4 h-4 rounded-full bg-[#08080a] border-2 border-white/20 flex items-center justify-center z-10">

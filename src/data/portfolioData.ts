@@ -18,7 +18,8 @@ export interface Project {
   category: string;
   tagline: string;
   description: string;
-  visualTheme: 'forensics' | 'voice' | 'fantasy' | 'assistant' | 'fintech';
+  visualTheme: 'forensics' | 'voice' | 'fantasy' | 'assistant' | 'fintech' | 'portfolio';
+  statusTag?: string;
   accentColor: string;
   tags: string[];
   features: string[];
@@ -275,129 +276,136 @@ export const portfolioData = {
     { name: "Modern Web Development", category: "Currently Exploring", tag: "Interactive Web" },
   ],
 
-  // ONLY THE 5 SPECIFIED PROJECTS
+  // 5 CORE PROJECTS (PORTFOLIO, KAVACH, VOICEFORGE, EMBERHOLD, BILLSHIELD)
   projects: [
     {
-      id: "kavach",
+      id: "portfolio",
       number: "01",
+      title: "Portfolio Website",
+      category: "Spatial Web & 3D Interactive Design",
+      tagline: "Interactive 3D Engineering Portfolio Showcase",
+      statusTag: "In development",
+      description: "Custom-engineered interactive 3D portfolio showcasing real software engineering projects through spatial design. Built with Three.js graphics, scroll-choreographed lighting, custom typography, an on-site portfolio assistant, and deep-dive technical architecture inspection.",
+      visualTheme: "portfolio",
+      accentColor: "#5eead4", // Signature spatial turquoise
+      tags: ["React 19", "Three.js", "TypeScript", "GSAP & Lenis", "Tailwind CSS v4", "Vite"],
+      features: [
+        "Dynamic Three.js 3D geometric world synchronized with scroll and active project views",
+        "Deep-dive technical architecture inspector with detailed specs and telemetry breakdown",
+        "Integrated virtual assistant (Neeraj AI) for instant academic and engineering queries",
+        "Strict typography design system using Playfair Display, Jost, and JetBrains Mono"
+      ],
+      architecture: "Client-side spatial web application orchestrating Three.js WebGL scenes, Lenis smooth-scroll physics, GSAP timeline triggers, and responsive glassmorphic interfaces.",
+      interactiveData: {
+        badge: "IN DEVELOPMENT",
+        metrics: [
+          { label: "FRONTEND", value: "React 19" },
+          { label: "GRAPHICS", value: "Three.js" },
+          { label: "STATUS", value: "Active Dev" }
+        ],
+        detailItems: [
+          "Engine: Three.js WebGL & custom scene lighting",
+          "Motion: GSAP triggers & Lenis smooth scrolling",
+          "Design: Responsive glassmorphism & strict typography"
+        ]
+      }
+    },
+    {
+      id: "kavach",
+      number: "02",
       title: "KAVACH / GoldenHour",
       category: "Cyber-Forensics & Offline Correlator",
-      tagline: "AI-assisted offline cyber-fraud evidence correlator",
-      description: "AI-assisted offline cyber-fraud evidence correlator analyzing CDR, IPDR, Bank/UPI records, Email Headers, and Android Artifacts. Built for fraud pattern identification, explainable timelines, risk scoring, evidence integrity, and forensic reporting.",
+      tagline: "Offline Cyber Fraud Triage & Evidence Correlator",
+      statusTag: "Completed",
+      description: "AI-assisted offline cyber-fraud evidence correlator analyzing CDR, IPDR, Bank/UPI records, Email Headers, and Android Artifacts. Built for rapid fraud pattern identification, explainable timelines, risk scoring, evidence integrity, and statutory forensic reporting during the critical first hour.",
       visualTheme: "forensics",
       accentColor: "#10b981", // Emerald forensic data green
       tags: ["CDR & IPDR", "Bank/UPI", "Email Headers", "Android Artifacts", "Risk Scoring", "Explainable Timelines"],
       features: [
-        "Fraud pattern identification correlating CDR, IPDR, and financial UPI/Bank records",
-        "Explainable chronological timeline reconstruction of multi-source suspect events",
-        "Risk scoring engine flagging anomaly vectors and money-mule networks",
-        "Cryptographic evidence integrity logging with standardized reporting module"
+        "100% air-gapped and offline local workstation operation (zero cloud dependencies)",
+        "Tamper-evident SHA-256 hash-chained custody log ensuring court-admissible evidence integrity",
+        "Multi-source entity resolution across Phone (+91), UPI, IMEI, IP, Email, and APK hashes",
+        "Automated directional fraud graph (NetworkX) tracing fund dissipation from victim to mule accounts",
+        "Offline vector PDF investigation brief generation with embedded cryptographic QR verification"
       ],
-      architecture: "Offline graph correlation engine calculating relational node proximity across telecommunications, banking, and Android forensic data.",
+      architecture: "Offline graph correlation engine calculating relational node proximity across telecommunications, banking, and Android forensic data with NetworkX and ReportLab.",
       interactiveData: {
         badge: "CYBER-FORENSICS",
         metrics: [
-          { label: "TRIAGE TIME", value: "< 3.8s" },
+          { label: "ARCHITECTURE", value: "100% Offline" },
           { label: "RECORD TYPES", value: "CDR, IPDR, UPI" },
           { label: "INTEGRITY", value: "SHA-256 Hashed" }
         ],
         detailItems: [
           "Data Vectors: CDR, IPDR, Bank/UPI, Email Headers, Android Artifacts",
-          "Focus: Fraud pattern identification & explainable timelines",
-          "Reporting: Evidence integrity & tamper-evident logs"
+          "Intelligence: NetworkX graph traversal & CGNAT false-link protection",
+          "Reporting: Bilingual statutory dossier with QR verification seal"
         ]
       }
     },
     {
       id: "voice-ai",
-      number: "02",
+      number: "03",
       title: "VoiceForge",
       category: "Real-Time Voice Interaction System",
-      tagline: "Interruption-Resilient Voice Interaction",
-      description: "AI-powered real-time voice interaction system featuring STT, Rime TTS, LLM tools, personas, conversational memory, RAG, observability, interruption-resilient interaction, generation fencing, AbortController, and browser Web Audio benchmarking.",
+      tagline: "Interruption-Resilient Voice Conversational AI",
+      statusTag: "Completed",
+      description: "Interruption-resilient conversational voice assistant prototype engineered for hands-busy environments. Features monotonic generation fencing, instant synchronous audio cessation (<25ms), and in-flight request cancellation via AbortController to guarantee zero speech collisions.",
       visualTheme: "voice",
       accentColor: "#a855f7", // Futuristic audio violet
-      tags: ["Interruption-Resilient", "STT & Rime TTS", "LLM Tools", "AbortController", "Web Audio Benchmark", "RAG & Memory"],
+      tags: ["Interruption-Resilient", "Rime Neural TTS", "Groq LLM", "AbortController", "Web Audio API", "Observability"],
       features: [
-        "Interruption-Resilient voice interaction with instant generation fencing via AbortController",
-        "STT and Rime TTS pipeline with dynamic persona shifting and conversational memory",
-        "RAG retrieval context coupled with end-to-end latency observability",
-        "Browser Web Audio API benchmarking for real-time speech processing metrics"
+        "Sub-25ms synchronous audio cutoff upon vocal interruption without event-loop lag",
+        "Monotonic generation ticket fencing preventing stale audio playback and out-of-order race conditions",
+        "Immediate in-flight network request cancellation via browser AbortController",
+        "Dynamic persona switching and domain RAG powered by Rime AI Neural TTS and Groq LLM",
+        "Real-time engineering command center with live latency measurements and telemetry logging"
       ],
-      architecture: "Streaming audio pipeline utilizing Web Audio buffers, VAD trigger cancellation, AbortController fencing, and low-latency TTS streams.",
+      architecture: "Client-gated duplex speech pipeline combining browser Web Audio API buffers, VAD trigger cancellation, AbortController fencing, and low-latency TTS streams.",
       interactiveData: {
         badge: "VOICE INTERACTION",
         metrics: [
-          { label: "INTERACTION", value: "Interruption-Safe" },
-          { label: "TTS ENGINE", value: "Rime TTS" },
+          { label: "HALT LATENCY", value: "< 25ms" },
+          { label: "TTS ENGINE", value: "Rime Neural" },
           { label: "CANCELLATION", value: "AbortController" }
         ],
         detailItems: [
-          "Core Model: Interruption-Resilient Voice Interaction",
-          "Tooling: LLM Tools, Personas, Memory & RAG",
-          "Benchmarking: Browser Web Audio latency metrics"
+          "Core Runtime: Monotonic generation ticket fencing (#N -> #N+1)",
+          "Audio Layer: Synchronous buffer discard with Web Audio API",
+          "Telemetry: Real-time latency HUD & BroadcastChannel ledger"
         ]
       }
     },
     {
       id: "emberhold",
-      number: "03",
+      number: "04",
       title: "Emberhold / Life RPG",
       category: "Dark-Fantasy Guild-Themed RPG",
       tagline: "Guild Hall, Quests, Relics & Character Progression",
-      description: "Dark-fantasy guild-themed Life RPG transforming self-discipline into an immersive dark-fantasy adventure. Features quests, XP, gold, streaks, character attributes, inventory, titles, rewards, and progression inside an atmospheric guild hall.",
+      statusTag: "Completed",
+      description: "Full-stack dark-fantasy Life RPG web application turning daily habits, chores, and study into an engaging adventure. Mundane tasks become Quests yielding XP, Gold, and streak multipliers to power 5 core hero attributes across 7 historical guild ranks.",
       visualTheme: "fantasy",
       accentColor: "#f97316", // Ember flame orange / gold
-      tags: ["Dark-Fantasy RPG", "Guild Hall", "Quests & XP", "Relics & Inventory", "Progression & Streaks"],
+      tags: ["React 19", "TanStack Start", "Nitro Engine", "Supabase PostgreSQL", "Web Audio API", "Tailwind CSS v4"],
       features: [
-        "Atmospheric Guild Hall with dynamic ember lighting and character progression",
-        "Quests and bounties translating daily milestones into XP and gold rewards",
-        "Inventory and Relic vault storing character titles, streaks, and unlocked attributes",
-        "Cinematic dark-fantasy visual design avoiding generic productivity dashboard aesthetics"
+        "Guild Notice Board with full quest CRUD, difficulty tiers, and recurring daily rites",
+        "Non-linear leveling curve across 7 guild ranks (Novice to Dragonsworn)",
+        "5 core hero attributes (Strength, Intellect, Endurance, Charisma, Spirit) fueled by real tasks",
+        "Consecutive day streak multipliers (+5% per day up to +70% bonus cap)",
+        "Vault of Relics economy with title equipping and native Web Audio synthesizer sound effects"
       ],
-      architecture: "Stateful RPG engine modeling attribute scaling, inventory relational schemas, quest dependency trees, and procedural loot rewards.",
+      architecture: "Full-stack server-validated RPG engine running on Nitro with TanStack RPC, Supabase PostgreSQL Row-Level Security (RLS), and Web Audio synthesizer.",
       interactiveData: {
         badge: "GUILD HALL RPG",
         metrics: [
-          { label: "GUILD STATUS", value: "Rank II" },
-          { label: "PROGRESSION", value: "XP & Gold" },
-          { label: "THEME", value: "Dark-Fantasy" }
+          { label: "RANKS", value: "7 Guild Tiers" },
+          { label: "ATTRIBUTES", value: "5 Core Stats" },
+          { label: "AUDIO", value: "Web Audio API" }
         ],
         detailItems: [
-          "Features: Quests, XP, Gold, Streaks, Attributes, Inventory, Titles",
-          "Visuals: Atmospheric Guild Hall, Relics, Embers & Lighting",
-          "Design: Immersive RPG universe (Not a productivity dashboard)"
-        ]
-      }
-    },
-    {
-      id: "rpm",
-      number: "04",
-      title: "RPM / AI Voice Assistant",
-      category: "AI Voice Assistant & Spatial Dialogue",
-      tagline: "Conversational Voice Interaction & Assistant UI",
-      description: "Dedicated AI voice assistant project featuring conversational voice interaction, structured assistant UI, audio visualization, contextual multi-turn dialogue, and desktop workflow automation.",
-      visualTheme: "assistant",
-      accentColor: "#38bdf8", // Atmospheric sky cyan
-      tags: ["Voice Assistant", "Audio Visualization", "Assistant UI", "Conversational AI", "Python Core"],
-      features: [
-        "Dedicated AI conversation engine with real-time audio visualization",
-        "Structured assistant UI with contextual feedback and execution status",
-        "Multi-turn context persistence for hands-free queries and commands",
-        "Extensible automation plugins for local machine interaction"
-      ],
-      architecture: "Modular assistant runtime with decoupled speech listeners, intent routing, and spatial audio feedback indicators.",
-      interactiveData: {
-        badge: "VOICE ASSISTANT",
-        metrics: [
-          { label: "PROJECT TYPE", value: "Independent" },
-          { label: "INTERFACE", value: "Assistant UI" },
-          { label: "VISUALIZER", value: "Audio Waveform" }
-        ],
-        detailItems: [
-          "Focus: AI conversation, voice interaction, assistant UI",
-          "Audio: Real-time audio visualization & auditory feedback",
-          "Architecture: Distinct from VoiceForge real-time voice pipeline"
+          "Quests: Notice Board with Trivial, Common, Perilous & Legendary tiers",
+          "Security: Server-side progression math & Supabase Row Level Security",
+          "Audio: Pure browser-synthesized fanfare, chimes, and coin clinks"
         ]
       }
     },
@@ -405,30 +413,32 @@ export const portfolioData = {
       id: "billshield",
       number: "05",
       title: "BillShield AI",
-      category: "Fintech Protection & Risk Intelligence",
-      tagline: "AI-Powered Financial & Bill Protection Concept",
-      description: "AI-powered financial/bill protection concept providing deep bill analysis, financial data parsing, hidden surcharge risk detection, proactive anomaly alerts, and protection-oriented consumer insights.",
+      category: "Healthcare Fintech & Statutory Audit",
+      tagline: "AI-Assisted Hospital Bill Audit & Dispute Dossier Generator",
+      statusTag: "Completed",
+      description: "Healthcare fintech auditing platform for Indian patients that evaluates medical bills against 37 codified statutory regulations (IRDAI Master Circular, GST Council Notifications, CGHS Tariffs, NPPA Drug Price Orders). Detects arithmetic discrepancies, duplicate tests, and unbundled charges, then generates formal dispute letters.",
       visualTheme: "fintech",
       accentColor: "#06b6d4", // Clean fintech teal / platinum
-      tags: ["Fintech Protection", "Bill Analysis", "Risk Detection", "Financial Alerts", "Protection Insights"],
+      tags: ["FastAPI (Python)", "Next.js 16", "PyMuPDF", "Gemini AI", "Tailwind CSS v4", "Statutory Rules"],
       features: [
-        "Deep bill analysis parsing complex statements and line-item recurring charges",
-        "Financial data risk detection identifying predatory surcharges and contract creep",
-        "Real-time protection alerts flagging anomalous billing spikes",
-        "Automated dispute-oriented insights and structured evidence breakdown"
+        "Multi-format bill ingestion (PDF, PNG, JPG) extracting line items with PyMuPDF",
+        "Deterministic rule engine evaluating 37 codified Indian healthcare statutory regulations",
+        "Line-by-line arithmetic reconciliation and duplicate diagnostic test detection",
+        "ICU unbundling detection identifying unlawful separate nursing and monitoring fees",
+        "One-click printable dispute dossier generator with patient UHID and legal circular citations"
       ],
-      architecture: "Financial telemetry parsing engine with heuristic surcharge detection algorithms, statement structuring, and risk analytics.",
+      architecture: "FastAPI Python backend coordinating PyMuPDF coordinate extraction, a 37-rule statutory engine, and Google Gemini AI for explainable dispute generation.",
       interactiveData: {
-        badge: "FINTECH SHIELD",
+        badge: "FINTECH AUDITOR",
         metrics: [
-          { label: "ANALYSIS", value: "Line-by-Line" },
-          { label: "RISK RADAR", value: "Active Scan" },
-          { label: "PROTECTION", value: "Alert Insights" }
+          { label: "STATUTORY RULES", value: "37 Codified" },
+          { label: "PARSER", value: "PyMuPDF PDF" },
+          { label: "DISPUTES", value: "Formal Dossier" }
         ],
         detailItems: [
-          "Focus: Bill analysis, financial data, risk detection, alerts",
-          "Insights: Protection-oriented financial summaries",
-          "Visual Direction: Premium fintech data visualization"
+          "Regulations: IRDAI Master Circular, GST Exemption 12/2017, CGHS Tariffs",
+          "Verification: Line-item math & ICU unbundling verification",
+          "Actions: Printable formal dispute letters for hospital grievance cells"
         ]
       }
     }
@@ -483,8 +493,8 @@ export const portfolioData = {
       answer: "Neeraj (Narendra Singh Yadav) is a B.Tech Electrical & Electronics Engineering student at IPS Academy, Indore. He is the department Academic Topper (8.95 CGPA, 1st Rank) passionate about software engineering, C++, Python, and AI systems."
     },
     {
-      keywords: ["projects", "kavach", "voiceforge", "emberhold", "rpm", "billshield"],
-      answer: "Neeraj has built five flagship projects:\n1. KAVACH / GoldenHour (Cyber-forensics & graph intelligence)\n2. Voice AI / VoiceForge (Interruption-Resilient voice interaction)\n3. Emberhold / Life RPG (Dark-fantasy gamified progression)\n4. RPM / AI Voice Assistant (Spatial audio voice assistant)\n5. BillShield AI (Fintech bill anomaly detection & risk radar)."
+      keywords: ["projects", "portfolio", "kavach", "voiceforge", "emberhold", "billshield"],
+      answer: "Neeraj's portfolio features five focused engineering projects:\n1. Interactive 3D Portfolio Website (Spatial Web & Three.js showcase — in development)\n2. KAVACH / GoldenHour (Cyber-forensics & offline graph intelligence)\n3. VoiceForge (Interruption-Resilient real-time voice AI)\n4. Emberhold / Life RPG (Dark-fantasy gamified self-discipline system)\n5. BillShield AI (Healthcare fintech hospital bill auditor & dispute dossier generator)."
     },
     {
       keywords: ["skills", "languages", "c++", "python", "oop", "tech"],

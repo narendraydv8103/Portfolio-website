@@ -30,11 +30,13 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
+  font-family: var(--font-heading);
   font-size: clamp(28px, 4vw, 64px);
   line-height: 1;
   letter-spacing: 0.02em;
   text-align: center;
   white-space: nowrap;
+  font-variant-numeric: lining-nums;
 }
 
 /* Exit: slide the curtain upward — curved bottom sweeps across and exits */

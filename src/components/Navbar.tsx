@@ -254,7 +254,7 @@ export const Navbar = () => {
     { label: "Home", target: 0 },
     { label: "Work", target: "#projects" },
     { label: "About", target: "#about" },
-    { label: "What I Can Build", target: "#what" },
+    { label: "What I Can Build", target: "#what-can-i-build" },
     { label: "Journey", target: "#journey" },
     { label: "Contact", target: "#contact" },
   ];

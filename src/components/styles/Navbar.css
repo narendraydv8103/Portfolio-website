@@ -29,9 +29,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  font-size: 18px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
   color: #eae5ec;
   display: inline-flex;
   align-items: center;
@@ -97,7 +98,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   color: #eae5ec;
@@ -237,9 +239,10 @@
 
 /* ── Section headings ── */
 .nav-heading {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: #555;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: #71717a;
   text-transform: uppercase;
   margin: 0 0 2rem;
   font-weight: 500;
@@ -256,10 +259,10 @@
   border: none;
   padding: 0.1rem 0;
   text-align: left;
-  font-family: inherit;
-  font-size: clamp(2.8rem, 5vw, 4.2rem);
-  font-weight: 700;
-  line-height: 1.18;
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.15;
   color: #eae5ec;
   cursor: pointer;
   display: flex;
@@ -271,7 +274,8 @@
     transform 0.75s cubic-bezier(0.7, 0, 0.2, 1),
     opacity 0.65s ease,
     color 0.25s ease;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  font-variant-numeric: lining-nums;
   will-change: transform;
 }
 
@@ -314,8 +318,9 @@
 }
 
 .nav-social-link {
-  font-size: 1rem;
-  color: #666;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #94a3b8;
   text-decoration: none;
   padding: 0.3rem 0;
   display: block;
