@@ -77,7 +77,7 @@ const NameMarquee = () => {
     };
   }, []);
 
-  const text = "Neeraj  Yadav -   ";
+  const text = "Narendra Yadav -   ";
 
   return (
     <div className="name-marquee">

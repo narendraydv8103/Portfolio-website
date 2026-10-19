@@ -276,7 +276,7 @@ export const Navbar = () => {
               &nbsp;Code by Neeraj
             </span>
             <span className={`logo-kavish${logoHovered ? " in" : ""}`}>
-              &nbsp;Neeraj Yadav
+              &nbsp;Narendra Yadav
             </span>
           </span>
         </button>
