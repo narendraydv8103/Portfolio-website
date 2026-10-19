@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://narendrasinghyadavportfolio.vercel.app/sitemap.xml
