@@ -206,7 +206,7 @@ export const StudioSkillsSpatial: React.FC = () => {
 
                 {/* Card Bottom: Practical Examples */}
                 <div className="pt-4 border-t border-white/5 space-y-2">
-                  <span className="text-[10px] font-sans font-semibold text-zinc-500 uppercase tracking-wider block">
+                  <span className="text-[10px] font-sans font-semibold text-zinc-500 uppercase tracking-[0.07em] block">
                     Practical Examples
                   </span>
                   <div className="flex flex-wrap gap-1.5">

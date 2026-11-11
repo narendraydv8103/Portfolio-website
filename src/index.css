@@ -747,62 +747,76 @@ body {
   font-weight: 500 !important;
 }
 
-/* 2. Small Section Markers & Mono Labels: Geist Mono 500, 10–12px, uppercase, letter-spacing 0.12–0.16em */
+/* 2. Small Section Markers & Eyebrows: Satoshi 500, uppercase, letter-spacing 0.08em */
 #about .flex.items-center.gap-3 > span,
 #what-can-i-build .flex.items-center.gap-3 > span,
-#what-can-i-build .font-sans.text-\[\#5eead4\].tracking-wider,
-#what-can-i-build .uppercase.tracking-wider.block,
 #projects .flex.items-center.gap-3 > span,
 #projects .font-sans.text-zinc-400:has(+ div.h-\[1px\]),
 #projects div.flex.items-center.justify-between.mb-12 > span,
 #journey .flex.items-center.gap-3 > span,
 #journey .tracking-widest.uppercase.text-\[\#5eead4\],
 #gallery .flex.items-center.gap-3 > span,
-#gallery .font-bold.text-\[10px\].tracking-widest,
 #contact .flex.items-center.gap-3 > span,
-#contact .text-\[11px\].tracking-wider.uppercase,
-#contact .font-semibold.tracking-wider.uppercase,
-.what-i-do-card .text-\[11px\].uppercase,
-.what-i-do-card span.tracking-wider,
 .section-marker,
 .label-mono,
-[class*="tracking-widest"][class*="uppercase"][class*="text-xs"],
-[class*="tracking-wider"][class*="uppercase"][class*="text-[10px]"],
-[class*="tracking-wider"][class*="uppercase"][class*="text-[11px]"] {
-  font-family: var(--font-mono) !important;
+[class*="tracking-widest"][class*="uppercase"][class*="text-xs"] {
+  font-family: var(--font-sans) !important;
   font-size: 0.72rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
-  font-variant-numeric: tabular-nums !important;
 }
 
-/* 3. Card Titles & Subtitles: Fraunces 600, line-height 1.15, mixed case */
+/* 3. Card Titles: Satoshi 700, line-height 1.2, letter-spacing -0.01em */
 .what-i-do-card h3,
 #what-can-i-build .group h3,
 .journey-card h3,
 .journey-card h4,
 #what-can-i-build h4,
-#about .p-4.rounded-xl.bg-zinc-900\/60 .font-display,
+#about .p-4.rounded-xl.bg-zinc-900\/60 span.font-bold,
 .modal-title {
-  font-family: var(--font-display) !important;
-  font-size: clamp(1.1rem, 1.6vw, 1.5rem) !important;
-  font-weight: 600 !important;
-  line-height: 1.18 !important;
-  letter-spacing: -0.015em !important;
+  font-family: var(--font-sans) !important;
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
   text-transform: none !important;
   text-wrap: balance !important;
 }
 
 #projects h3 {
-  font-family: var(--font-display) !important;
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem) !important;
-  font-weight: 600 !important;
+  font-family: var(--font-sans) !important;
+  font-size: clamp(1.5rem, 2.3vw, 2.1rem) !important;
+  font-weight: 700 !important;
   line-height: 1.15 !important;
   letter-spacing: -0.015em !important;
+  text-transform: none !important;
 }
 
-/* 4. Card Paragraphs & Descriptions: Geist 400, line-height 1.65, letter-spacing normal */
+/* 3b. Card Subtitles & Secondary Lines: Satoshi 500, sentence case, normal tracking */
+.what-i-do-card p.text-zinc-400,
+.what-i-do-card .text-\[11px\].text-zinc-400,
+.what-i-do-card p.subtitle,
+.card-subtitle {
+  font-family: var(--font-sans) !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* 3c. "SKILLSET & TOOLS" Row Title: Satoshi 500, uppercase, letter-spacing 0.07em */
+.what-i-do-card span.tracking-wider,
+.what-i-do-card .skillset-title,
+#what-can-i-build .uppercase.tracking-wider.block {
+  font-family: var(--font-sans) !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+}
+
+/* 4. Card Paragraphs & Descriptions: Satoshi 400, line-height 1.65, letter-spacing normal */
 .what-i-do-card p,
 #what-can-i-build .group p,
 #what-can-i-build p.text-zinc-400,
@@ -821,21 +835,20 @@ body {
   text-wrap: pretty !important;
 }
 
-/* 5. Stats Numbers: Fraunces 600, lining-nums + tabular-nums */
-.about-stat-tile .font-display,
+/* 5. Stats Numbers: Satoshi 700, lining-nums + tabular-nums */
 .about-stat-tile .text-3xl,
 .about-stat-tile .text-4xl,
 #studioPhotoCard .font-sans.text-xs.font-bold,
 #about .about-stat-tile .group-hover\:text-\[\#5eead4\],
 .stat-number,
 .stat-lining {
-  font-family: var(--font-display) !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.01em !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
   font-variant-numeric: lining-nums tabular-nums !important;
 }
 
-/* 6. Stat Captions, Status Badges, Step Labels & Dates: Geist Mono 500, tabular-nums */
+/* 6. Stat Captions, Status Badges, Step Labels & Dates: Satoshi 500 */
 .about-stat-tile .truncate,
 .about-stat-tile [class*="tracking-wider"],
 .about-stat-tile span[class*="rounded-full"],
@@ -850,30 +863,35 @@ body {
 #journey span:has(> span.bg-cyan-400),
 #journey span:has(> svg.text-emerald-400),
 .status-badge,
-.step-label,
-.journey-card .shrink-0.font-display,
-.journey-card .text-2xl.font-display,
-.journey-card .text-3xl.font-display {
-  font-family: var(--font-mono) !important;
+.step-label {
+  font-family: var(--font-sans) !important;
   font-weight: 500 !important;
-  font-variant-numeric: tabular-nums !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.04em !important;
 }
 
-/* 7. Tags / Chips / Tech Pills: Geist Mono 400, 10–12px */
+.journey-card .text-2xl,
+.journey-card .text-3xl {
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* 7. Tags / Chips / Tech Pills: Satoshi 500, 11–12px, normal tracking */
 .what-i-do-card .rounded-md.border,
 #what-can-i-build .rounded-md.border,
 #what-can-i-build .rounded-md.bg-white\/\[0\.04\],
 #projects .rounded-md.border,
 #projects .rounded-full.border.text-xs,
-#skills .rounded-md {
-  font-family: var(--font-mono) !important;
-  font-size: 0.72rem !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.04em !important;
+#skills .rounded-md,
+.tech-pill {
+  font-family: var(--font-sans) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
 }
 
-/* 8. Project Tabs & Navigation Buttons: Geist 500 */
+/* 8. Project Tabs & Navigation Buttons: Satoshi 500 */
 #projects .no-scrollbar button {
   font-family: var(--font-sans) !important;
   font-size: 0.8125rem !important;
@@ -881,7 +899,7 @@ body {
   letter-spacing: 0.02em !important;
 }
 
-/* 9. KAVACH Simulator & Terminal Console: Geist Mono */
+/* 9. KAVACH Simulator & Terminal Console: Geist Mono (Preserved for real terminal telemetry) */
 #projects .font-mono,
 #projects [class*="text-emerald-400"],
 #projects [class*="text-emerald-300"],
@@ -897,7 +915,7 @@ body {
   font-variant-numeric: normal !important;
 }
 
-/* 10. Buttons & CTAs: Geist 500 */
+/* 10. Buttons & CTAs: Satoshi 500 */
 #contact a.rounded-full.bg-white,
 #what-can-i-build button.rounded-full,
 #projects button.rounded-lg.bg-emerald-600,
@@ -918,7 +936,7 @@ a[download] {
   letter-spacing: 0.04em !important;
 }
 
-/* 11. Contact Section & Footer Local Time / Version (Geist Mono) */
+/* 11. Contact Section & Footer Local Time / Version (Satoshi) */
 #contact .space-y-6 span.font-bold {
   font-family: var(--font-sans) !important;
   font-size: 1.125rem !important;
@@ -940,27 +958,25 @@ a[download] {
 
 #contact .pt-8,
 #contact .pt-8 * {
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 400 !important;
-  font-variant-numeric: tabular-nums !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.04em !important;
 }
 
-/* 12. "DRAG" Badge & Project Counter */
+/* 12. "DRAG" Badge & Project Counter (Satoshi) */
 #gallery span.tracking-widest.uppercase {
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-sans) !important;
   font-size: 10px !important;
   font-weight: 600 !important;
-  letter-spacing: 0.16em !important;
+  letter-spacing: 0.08em !important;
 }
 
 #projects div.flex.items-center.justify-between.mb-12 > span:last-child {
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.75rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.12em !important;
-  font-variant-numeric: tabular-nums !important;
+  letter-spacing: 0.06em !important;
 }
 
 /* 13. AI Chat Widget: Messages, placeholder, buttons */
@@ -971,7 +987,7 @@ aside[aria-label="AI Portfolio Assistant"] * {
 
 aside[aria-label="AI Portfolio Assistant"] span.font-mono,
 aside[aria-label="AI Portfolio Assistant"] [class*="uppercase"] {
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-sans) !important;
 }
 
 aside[aria-label="AI Portfolio Assistant"] button.group.rounded-full {

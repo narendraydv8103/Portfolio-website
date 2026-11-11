@@ -21,9 +21,9 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
   const services = [
     {
       id: 'web-development',
-      titleLine1: 'WEB',
-      titleLine2: 'DEVELOPMENT',
-      subtitle: 'Modern & Scalable Web Applications',
+      titleLine1: 'Web',
+      titleLine2: 'Development',
+      subtitle: 'Modern & scalable web applications',
       description:
         'Modern, responsive websites and web applications built with a focus on usability, performance, and clean design.',
       skillsetTitle: 'Skillset & tools',
@@ -39,8 +39,8 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
     {
       id: 'ai-solutions',
       titleLine1: 'AI',
-      titleLine2: 'SOLUTIONS',
-      subtitle: 'Leveraging AI for Business Impact',
+      titleLine2: 'Solutions',
+      subtitle: 'Leveraging AI for business impact',
       description:
         'Exploring AI-powered applications and intelligent solutions that turn practical ideas into useful products.',
       skillsetTitle: 'Skillset & tools',
@@ -78,7 +78,7 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
 
         {/* Card Header & Description */}
         <div>
-          <h3 className="font-sans font-bold text-xl sm:text-2xl text-white tracking-tight leading-[1.1] mb-1">
+          <h3 className="font-sans font-bold text-xl sm:text-[22px] text-white tracking-[-0.01em] leading-[1.15] mb-1.5">
             {service.titleLine1}
             {service.titleLine2 && (
               <>
@@ -88,7 +88,7 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
             )}
           </h3>
 
-          <p className="text-[11px] sm:text-xs font-sans font-medium text-zinc-400 uppercase tracking-wider mb-3">
+          <p className="text-xs sm:text-[13px] font-sans font-medium text-zinc-400 mb-3 tracking-normal normal-case">
             {service.subtitle}
           </p>
 
@@ -100,7 +100,7 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
         {/* Expandable Skills / Tools Section */}
         <div className="mt-4 pt-3 border-t border-white/5">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] font-sans font-medium text-zinc-400 uppercase tracking-wider">
+            <span className="text-[11px] sm:text-xs font-sans font-medium text-zinc-400 uppercase tracking-[0.07em]">
               {service.skillsetTitle}
             </span>
             <button
@@ -122,7 +122,7 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
               {service.tags.map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10 text-[11px] font-sans font-medium text-zinc-200"
+                  className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10 text-[11px] sm:text-xs font-sans font-medium text-zinc-200 tracking-normal normal-case"
                 >
                   {tag}
                 </span>

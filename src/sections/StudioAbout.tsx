@@ -45,17 +45,17 @@ export const StudioAbout: React.FC = () => {
             {/* 3. Existing Learning / Technology Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-xl bg-zinc-900/60 border border-white/10">
-                <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-wider">01 / CORE</span>
+                <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-[0.08em]">01 / CORE</span>
                 <span className="text-sm font-sans font-bold text-white block">C++ &amp; Python</span>
                 <span className="text-xs text-zinc-400 mt-1 block">OOP &amp; Problem Solving</span>
               </div>
               <div className="p-4 rounded-xl bg-zinc-900/60 border border-white/10">
-                <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-wider">02 / EXPLORING</span>
+                <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-[0.08em]">02 / EXPLORING</span>
                 <span className="text-sm font-sans font-bold text-white block">React &amp; TS</span>
                 <span className="text-xs text-zinc-400 mt-1 block">Modern Web UI</span>
               </div>
               <div className="p-4 rounded-xl bg-zinc-900/60 border border-white/10">
-                <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-wider">03 / APPLIED AI</span>
+                <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-[0.08em]">03 / APPLIED AI</span>
                 <span className="text-sm font-sans font-bold text-white block">AI/ML &amp; Voice</span>
                 <span className="text-xs text-zinc-400 mt-1 block">Automation Bots</span>
               </div>
@@ -104,7 +104,7 @@ export const StudioAbout: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-2 gap-2">
-                    <span className="text-[11px] sm:text-xs font-sans font-medium text-zinc-400 uppercase tracking-wider truncate">
+                    <span className="text-[11px] sm:text-xs font-sans font-medium text-zinc-400 uppercase tracking-[0.08em] truncate">
                       {stat.label}
                     </span>
                     {stat.badge && (
