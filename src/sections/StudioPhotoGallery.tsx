@@ -6,8 +6,8 @@ const GALLERY_PHOTOS = portfolioData.galleryPhotos;
 
 export const StudioPhotoGallery: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const currentIndexRef = useRef(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const currentIndexRef = useRef(1);
   const [isHovered, setIsHovered] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
