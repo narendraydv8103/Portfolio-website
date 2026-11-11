@@ -1,13 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Jost:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-body: 'Jost', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
+  --font-serif: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
+  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --font-sans: var(--font-body);
-  --font-display: var(--font-heading);
+  /* Aliases to ensure complete compatibility across existing components */
+  --font-heading: var(--font-display);
+  --font-body: var(--font-sans);
+  --font-syne: var(--font-display);
 
   --color-studio-bg: #08080a;
   --color-studio-surface: #101014;
@@ -24,17 +26,20 @@
 }
 
 :root {
-  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-body: 'Jost', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-sans: var(--font-body);
-  --font-display: var(--font-heading);
+  --font-display: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
+  --font-serif: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
+  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  font-family: var(--font-body);
-  font-weight: 300;
+  --font-heading: var(--font-display);
+  --font-body: var(--font-sans);
+  --font-syne: var(--font-display);
+
+  font-family: var(--font-sans);
+  font-weight: 400;
   font-optical-sizing: auto;
   font-style: normal;
-  line-height: 1.7;
+  line-height: 1.65;
   scroll-behavior: smooth;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.78);
@@ -62,9 +67,12 @@ h5,
 h6,
 .font-display,
 .font-heading,
+.font-serif,
 .font-syne {
-  font-family: var(--font-heading) !important;
-  font-variant-numeric: lining-nums;
+  font-family: var(--font-display) !important;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
   text-wrap: balance;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -72,7 +80,17 @@ h6,
 }
 
 p {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: normal;
   text-wrap: pretty;
+}
+
+.font-sans,
+.font-body {
+  font-family: var(--font-sans) !important;
+  font-weight: 400;
 }
 
 .font-mono,
@@ -81,6 +99,7 @@ pre,
 kbd,
 samp {
   font-family: var(--font-mono) !important;
+  font-weight: 400;
 }
 
 * {
@@ -88,9 +107,9 @@ samp {
 }
 
 html {
-  font-family: var(--font-body);
-  font-weight: 300;
-  line-height: 1.7;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.65;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -98,9 +117,9 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  font-weight: 300;
-  line-height: 1.7;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.65;
   margin: 0;
   height: auto;
   background-color: #050810;
@@ -662,54 +681,63 @@ body {
 
 /* ── Typography System Enforcements & Mapping ── */
 .font-display {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-display) !important;
   font-variant-numeric: lining-nums;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 
 .font-sans {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-sans) !important;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
 }
 
 /* ==================================================
-   EDITORIAL TYPOGRAPHY SYSTEM (Section 4 & 5)
+   PROFESSIONAL 3-FONT TYPOGRAPHY SYSTEM
+   1. DISPLAY / HEADINGS: Fraunces
+   2. BODY / UI: Geist
+   3. LABELS / DATA: Geist Mono
    ================================================== */
 
-/* 1. Big Section Titles: Playfair Display 600/700, clamp(2.5rem, 6vw, 5rem), mixed case, line-height 1.1, letter-spacing -0.01em */
+/* 1. Big Section Titles: Fraunces 600, line-height 1.08–1.12, letter-spacing -0.015em */
 #what-can-i-build h2,
 #gallery h2,
 #contact h2,
 #projects h2,
 #journey h2 {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-display) !important;
   font-size: clamp(2.5rem, 6vw, 5rem) !important;
-  font-weight: 700 !important;
-  line-height: 1.1 !important;
-  letter-spacing: -0.01em !important;
+  font-weight: 600 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.015em !important;
   text-transform: none !important;
   text-wrap: balance !important;
 }
 
 #about h2 {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-display) !important;
   font-size: clamp(2.2rem, 5vw, 4.2rem) !important;
-  font-weight: 700 !important;
-  line-height: 1.15 !important;
-  letter-spacing: -0.01em !important;
+  font-weight: 600 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.015em !important;
   text-wrap: balance !important;
 }
 
-/* Highlighted Accent Words in Headings (Playfair Display italic, keeping accent color) */
+/* Highlighted Accent Words in Headings (Fraunces italic, keeping accent color) */
 #gallery h2 span.text-\[\#5eead4\],
 #journey h2 span.text-\[\#5eead4\],
 #projects h2 span.text-\[\#5eead4\],
-#contact h2 span.text-transparent {
-  font-family: var(--font-heading) !important;
+#contact h2 span.text-transparent,
+.heading-accent {
+  font-family: var(--font-display) !important;
   font-style: italic !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
-/* 2. Small Section Markers & Mono Labels: JetBrains Mono 500, 0.7rem to 0.75rem, uppercase, letter-spacing 0.12em, muted color */
+/* 2. Small Section Markers & Mono Labels: Geist Mono 500, 10–12px, uppercase, letter-spacing 0.12–0.16em */
 #about .flex.items-center.gap-3 > span,
 #what-can-i-build .flex.items-center.gap-3 > span,
 #what-can-i-build .font-sans.text-\[\#5eead4\].tracking-wider,
@@ -724,8 +752,6 @@ body {
 #contact .flex.items-center.gap-3 > span,
 #contact .text-\[11px\].tracking-wider.uppercase,
 #contact .font-semibold.tracking-wider.uppercase,
-#about .about-stat-tile .truncate,
-#about .p-4.rounded-xl.bg-zinc-900\/60 > span:first-child,
 .what-i-do-card .text-\[11px\].uppercase,
 .what-i-do-card span.tracking-wider,
 .section-marker,
@@ -736,35 +762,37 @@ body {
   font-family: var(--font-mono) !important;
   font-size: 0.72rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
+  font-variant-numeric: tabular-nums !important;
 }
 
-/* 3. Card Titles: Playfair Display 600, clamp(1.1rem, 1.6vw, 1.5rem), line-height 1.25, mixed case */
+/* 3. Card Titles & Subtitles: Fraunces 600, line-height 1.15, mixed case */
 .what-i-do-card h3,
 #what-can-i-build .group h3,
 .journey-card h3,
 .journey-card h4,
 #what-can-i-build h4,
-#about .p-4.rounded-xl.bg-zinc-900\/60 .font-display {
-  font-family: var(--font-heading) !important;
+#about .p-4.rounded-xl.bg-zinc-900\/60 .font-display,
+.modal-title {
+  font-family: var(--font-display) !important;
   font-size: clamp(1.1rem, 1.6vw, 1.5rem) !important;
   font-weight: 600 !important;
-  line-height: 1.25 !important;
-  letter-spacing: -0.01em !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.015em !important;
   text-transform: none !important;
   text-wrap: balance !important;
 }
 
 #projects h3 {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-display) !important;
   font-size: clamp(1.6rem, 2.5vw, 2.2rem) !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.01em !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.015em !important;
 }
 
-/* 4. Card Paragraphs & Descriptions: Jost 300, 0.95rem to 1rem, line-height 1.7, letter-spacing 0.01em */
+/* 4. Card Paragraphs & Descriptions: Geist 400, line-height 1.65, letter-spacing normal */
 .what-i-do-card p,
 #what-can-i-build .group p,
 #what-can-i-build p.text-zinc-400,
@@ -772,17 +800,18 @@ body {
 #projects p.leading-relaxed,
 .journey-card p,
 #about p,
-#contact p.text-zinc-300 {
-  font-family: var(--font-body) !important;
-  font-weight: 300 !important;
+#contact p.text-zinc-300,
+#gallery .space-y-4 p {
+  font-family: var(--font-sans) !important;
+  font-weight: 400 !important;
   font-size: 0.95rem !important;
-  line-height: 1.7 !important;
-  letter-spacing: 0.01em !important;
+  line-height: 1.65 !important;
+  letter-spacing: normal !important;
   color: rgba(255, 255, 255, 0.78) !important;
   text-wrap: pretty !important;
 }
 
-/* 5. Stats Numbers: Playfair Display 700, lining-nums + tabular-nums */
+/* 5. Stats Numbers: Fraunces 600, lining-nums + tabular-nums */
 .about-stat-tile .font-display,
 .about-stat-tile .text-3xl,
 .about-stat-tile .text-4xl,
@@ -790,45 +819,59 @@ body {
 #about .about-stat-tile .group-hover\:text-\[\#5eead4\],
 .stat-number,
 .stat-lining {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
   font-variant-numeric: lining-nums tabular-nums !important;
 }
 
-/* 6. Timeline Years (2023, 2024, 2024-25): Playfair Display italic 600, lining-nums */
+/* 6. Stat Captions, Status Badges, Step Labels & Dates: Geist Mono 500, tabular-nums */
+.about-stat-tile .truncate,
+.about-stat-tile [class*="tracking-wider"],
+.about-stat-tile span[class*="rounded-full"],
+#journey .journey-card span[class*="rounded-full"],
+#journey span:has(> svg.w-3.h-3),
+#journey span:has(> svg.w-3\.5),
+#about span:has(> span.bg-emerald-400),
+#projects span[class*="rounded-md"][style*="currentProject.accentColor"],
+#projects span[class*="rounded"]:has(+ span),
+#projects span:has(> span.bg-emerald-400),
+#projects span:has(> span.bg-cyan-400),
+#journey span:has(> span.bg-cyan-400),
+#journey span:has(> svg.text-emerald-400),
+.status-badge,
+.step-label,
 .journey-card .shrink-0.font-display,
 .journey-card .text-2xl.font-display,
 .journey-card .text-3xl.font-display {
-  font-family: var(--font-heading) !important;
-  font-style: italic !important;
-  font-weight: 600 !important;
-  font-variant-numeric: lining-nums !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 500 !important;
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: 0.05em !important;
 }
 
-/* 7. Tags / Chips / Pills: Jost 400, 0.75rem to 0.8125rem, no uppercase */
+/* 7. Tags / Chips / Tech Pills: Geist Mono 400, 10–12px */
 .what-i-do-card .rounded-md.border,
 #what-can-i-build .rounded-md.border,
+#what-can-i-build .rounded-md.bg-white\/\[0\.04\],
 #projects .rounded-md.border,
 #projects .rounded-full.border.text-xs,
-#about span.rounded-full.border,
-#contact .rounded-full.bg-zinc-900,
-#contact .rounded-full.bg-zinc-900\/80 {
-  font-family: var(--font-body) !important;
-  font-size: 0.8125rem !important;
+#skills .rounded-md {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
   font-weight: 400 !important;
-  text-transform: none !important;
-  letter-spacing: 0.01em !important;
+  letter-spacing: 0.04em !important;
 }
 
-/* 8. Project Tabs: Jost 500, 0.8rem */
+/* 8. Project Tabs & Navigation Buttons: Geist 500 */
 #projects .no-scrollbar button {
-  font-family: var(--font-body) !important;
-  font-size: 0.8rem !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.8125rem !important;
   font-weight: 500 !important;
   letter-spacing: 0.02em !important;
 }
 
-/* 9. KAVACH Simulator & Terminal Console: JetBrains Mono */
+/* 9. KAVACH Simulator & Terminal Console: Geist Mono */
 #projects .font-mono,
 #projects [class*="text-emerald-400"],
 #projects [class*="text-emerald-300"],
@@ -844,7 +887,7 @@ body {
   font-variant-numeric: normal !important;
 }
 
-/* 10. Buttons: Jost 500, 0.8125rem to 0.875rem, letter-spacing: 0.06em */
+/* 10. Buttons & CTAs: Geist 500 */
 #contact a.rounded-full.bg-white,
 #what-can-i-build button.rounded-full,
 #projects button.rounded-lg.bg-emerald-600,
@@ -854,72 +897,83 @@ body {
 .about-circle-btn,
 .top-nav-link,
 button,
-.btn-typography {
-  font-family: var(--font-body);
+.btn-typography,
+a[download] {
+  font-family: var(--font-sans);
 }
 
 #contact a.rounded-full.bg-white {
   font-size: 0.875rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.04em !important;
 }
 
-/* 11. Contact Section Profile Identity & Footer */
+/* 11. Contact Section & Footer Local Time / Version (Geist Mono) */
 #contact .space-y-6 span.font-bold {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-sans) !important;
   font-size: 1.125rem !important;
   font-weight: 500 !important;
   letter-spacing: 0.01em !important;
 }
 
 #contact .space-y-6 span.text-\[\#5eead4\] {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.875rem !important;
   font-weight: 400 !important;
 }
 
 #contact .space-y-6 span.text-zinc-400 {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.875rem !important;
   font-weight: 400 !important;
 }
 
-#contact .pt-8 {
-  font-family: var(--font-body) !important;
-  font-size: 0.8rem !important;
-  font-weight: 300 !important;
-  color: rgba(255, 255, 255, 0.6) !important;
+#contact .pt-8,
+#contact .pt-8 * {
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  font-weight: 400 !important;
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: 0.06em !important;
 }
 
-/* 12. Gallery Subtitle: Jost 300, centered, max-width 45ch */
-#gallery .space-y-4 p {
-  font-family: var(--font-body) !important;
-  font-weight: 300 !important;
-  font-size: 0.95rem !important;
-  line-height: 1.7 !important;
-  max-width: 45ch !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-  text-wrap: pretty !important;
+/* 12. "DRAG" Badge & Project Counter */
+#gallery span.tracking-widest.uppercase {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em !important;
+}
+
+#projects div.flex.items-center.justify-between.mb-12 > span:last-child {
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.12em !important;
+  font-variant-numeric: tabular-nums !important;
 }
 
 /* 13. AI Chat Widget: Messages, placeholder, buttons */
 aside[aria-label="AI Portfolio Assistant"],
 aside[aria-label="AI Portfolio Assistant"] * {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-sans) !important;
+}
+
+aside[aria-label="AI Portfolio Assistant"] span.font-mono,
+aside[aria-label="AI Portfolio Assistant"] [class*="uppercase"] {
+  font-family: var(--font-mono) !important;
 }
 
 aside[aria-label="AI Portfolio Assistant"] button.group.rounded-full {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.875rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.04em !important;
 }
 
-/* Ensure inputs and textareas inherit body font */
+/* Ensure inputs and textareas inherit sans font */
 input,
 textarea,
 select {
-  font-family: var(--font-body) !important;
+  font-family: var(--font-sans) !important;
 }

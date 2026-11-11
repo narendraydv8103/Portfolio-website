@@ -19,9 +19,9 @@
 }
 
 .marquee-track span {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(3rem, 9vw, 8rem);
-  font-weight: 700;
+  font-weight: 600;
   color: rgba(234, 229, 236, 0.78);
   letter-spacing: -0.02em;
   padding-right: 0;

@@ -165,10 +165,10 @@ export const StudioContact: React.FC = () => {
               <a
                 href={`mailto:${portfolioData.profile.email}`}
                 className="text-xs sm:text-sm font-sans font-medium text-zinc-200 hover:text-white transition-colors flex items-center gap-2 pr-2 tracking-normal"
-                style={{ fontFamily: 'var(--font-body)' }}
+                style={{ fontFamily: 'var(--font-sans)' }}
               >
                 <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span className="font-sans font-medium text-zinc-200 hover:text-white tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+                <span className="font-sans font-medium text-zinc-200 hover:text-white tracking-normal" style={{ fontFamily: 'var(--font-sans)' }}>
                   {portfolioData.profile.email}
                 </span>
               </a>
@@ -187,10 +187,10 @@ export const StudioContact: React.FC = () => {
               <a
                 href={`tel:${portfolioData.profile.phone}`}
                 className="text-xs sm:text-sm font-sans font-medium text-zinc-200 hover:text-white transition-colors flex items-center gap-2 pr-2 tracking-normal"
-                style={{ fontFamily: 'var(--font-body)' }}
+                style={{ fontFamily: 'var(--font-sans)' }}
               >
                 <Phone className="w-4 h-4 text-teal-400 shrink-0" />
-                <span className="font-sans font-medium text-zinc-200 hover:text-white tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+                <span className="font-sans font-medium text-zinc-200 hover:text-white tracking-normal" style={{ fontFamily: 'var(--font-sans)' }}>
                   {portfolioData.profile.phone}
                 </span>
               </a>
@@ -211,11 +211,11 @@ export const StudioContact: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2.5 rounded-full bg-zinc-900 border border-white/10 text-xs sm:text-sm font-sans font-medium text-zinc-200 hover:text-white hover:border-[#5eead4]/40 hover:text-[#5eead4] transition-all flex items-center gap-2 group tracking-normal"
-              style={{ fontFamily: 'var(--font-body)' }}
+              style={{ fontFamily: 'var(--font-sans)' }}
               title="Download Narendra's Resume"
             >
               <FileText className="w-4 h-4 text-[#5eead4] group-hover:scale-110 transition-transform" />
-              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-sans)' }}>
                 Resume
               </span>
               <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-[#5eead4] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
@@ -230,10 +230,10 @@ export const StudioContact: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-full bg-zinc-900/80 border border-white/10 text-xs sm:text-sm font-sans font-medium text-zinc-300 hover:text-white hover:border-pink-500/40 transition-all flex items-center gap-2 group tracking-normal"
-              style={{ fontFamily: 'var(--font-body)' }}
+              style={{ fontFamily: 'var(--font-sans)' }}
             >
               <InstagramIcon className="w-3.5 h-3.5 text-pink-400 group-hover:scale-110 transition-transform" />
-              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-sans)' }}>
                 @{portfolioData.profile.instagram}
               </span>
               <ArrowUpRight className="w-3 h-3 text-zinc-500" />
@@ -245,9 +245,9 @@ export const StudioContact: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-full bg-zinc-900/80 border border-white/10 text-xs sm:text-sm font-sans font-medium text-zinc-300 hover:text-white hover:border-white/20 transition-all flex items-center gap-1.5 tracking-normal"
-              style={{ fontFamily: 'var(--font-body)' }}
+              style={{ fontFamily: 'var(--font-sans)' }}
             >
-              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-sans)' }}>
                 LinkedIn
               </span>
               <ArrowUpRight className="w-3 h-3 text-zinc-500" />
@@ -259,9 +259,9 @@ export const StudioContact: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-full bg-zinc-900/80 border border-white/10 text-xs sm:text-sm font-sans font-medium text-zinc-300 hover:text-white hover:border-white/20 transition-all flex items-center gap-1.5 tracking-normal"
-              style={{ fontFamily: 'var(--font-body)' }}
+              style={{ fontFamily: 'var(--font-sans)' }}
             >
-              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-sans)' }}>
                 GitHub
               </span>
               <ArrowUpRight className="w-3 h-3 text-zinc-500" />
@@ -275,11 +275,11 @@ export const StudioContact: React.FC = () => {
                 setSelectedPhotoIndex(null);
               }}
               className="px-4 py-2 rounded-full bg-zinc-900/80 border border-white/10 text-xs sm:text-sm font-sans font-medium text-zinc-300 hover:text-white hover:border-[#5eead4]/40 hover:text-[#5eead4] transition-all flex items-center gap-1.5 cursor-pointer group tracking-normal"
-              style={{ fontFamily: 'var(--font-body)' }}
+              style={{ fontFamily: 'var(--font-sans)' }}
               aria-label="Open personal photo gallery"
             >
               <Images className="w-3.5 h-3.5 text-[#5eead4] group-hover:scale-110 transition-transform" />
-              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-sans)' }}>
                 Gallery
               </span>
             </button>
