@@ -276,17 +276,30 @@ export const Navbar = () => {
 
   const scrollToTarget = (target: string | number) => {
     const smoother = getSmoother();
-    if (smoother) {
-      smoother.scrollTo(target, true);
-    } else {
-      if (typeof target === "number") {
-        window.scrollTo({ top: target, behavior: "smooth" });
+    if (typeof target === "number") {
+      if (smoother) {
+        smoother.scrollTo(target, true);
       } else {
-        const el = document.querySelector(target);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
+        window.scrollTo({ top: target, behavior: "smooth" });
       }
+      return;
+    }
+
+    const el = document.querySelector<HTMLElement>(target);
+    if (!el) return;
+
+    if (smoother) {
+      const content = document.querySelector<HTMLElement>("#smooth-content");
+      if (content) {
+        const speed = (smoother as any).vars?.speed || 1;
+        const targetTop = el.getBoundingClientRect().top - content.getBoundingClientRect().top;
+        const scrollPos = targetTop / speed;
+        smoother.scrollTo(scrollPos, true);
+      } else {
+        smoother.scrollTo(target, true);
+      }
+    } else {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 

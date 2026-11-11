@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Trophy, Award, Calendar, Building, CheckCircle, Flame, ExternalLink, Download, X, GraduationCap, BookOpen } from 'lucide-react';
+import { Trophy, Award, Calendar, Building, CheckCircle, Flame, ExternalLink, X, GraduationCap, BookOpen } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { portfolioData, type Achievement } from '../data/portfolioData';
@@ -457,25 +457,14 @@ export const StudioJourney: React.FC = () => {
                   )}
 
                   {item.certificateUrl && (
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={() => setSelectedCertificate(item)}
-                        className="text-[#5eead4] hover:underline flex items-center gap-1 text-[11px] cursor-pointer"
-                        title="View Certificate"
-                      >
-                        <span>View Certificate</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </button>
-                      <a
-                        href={encodeURI(item.certificateUrl)}
-                        download={item.certificateUrl.split('/').pop()?.trim() || 'Certificate.pdf'}
-                        className="text-zinc-400 hover:text-white flex items-center gap-1 text-[11px] cursor-pointer transition-colors"
-                        title="Download Certificate"
-                      >
-                        <Download className="w-3 h-3" />
-                        <span>Download</span>
-                      </a>
-                    </div>
+                    <button
+                      onClick={() => setSelectedCertificate(item)}
+                      className="text-[#5eead4] hover:underline flex items-center gap-1 text-[11px] cursor-pointer"
+                      title="View Certificate"
+                    >
+                      <span>View Certificate</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </button>
                   )}
                 </div>
               </div>
@@ -530,27 +519,16 @@ export const StudioJourney: React.FC = () => {
                 </div>
 
                 {selectedCertificate.certificateUrl && (
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={encodeURI(selectedCertificate.certificateUrl)}
-                      download={selectedCertificate.certificateUrl.split('/').pop()?.trim() || 'Certificate.pdf'}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 text-xs font-sans font-medium text-zinc-300 hover:text-white border border-white/10 transition-colors"
-                      title="Download original certificate document"
-                    >
-                      <Download className="w-3 h-3 text-[#5eead4]" />
-                      <span>Download</span>
-                    </a>
-                    <a
-                      href={encodeURI(selectedCertificate.certificateUrl)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 text-xs font-sans font-medium text-[#5eead4] border border-white/10 transition-colors"
-                      title="Open original certificate in new browser tab"
-                    >
-                      <span>Open in Tab</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  </div>
+                  <a
+                    href={encodeURI(selectedCertificate.certificateUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 text-xs font-sans font-medium text-[#5eead4] border border-white/10 transition-colors"
+                    title="Open original certificate in new browser tab"
+                  >
+                    <span>Open in Tab</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 )}
               </div>
 

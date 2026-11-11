@@ -117,14 +117,20 @@ const SKILL_CATEGORY_ICONS = [Terminal, Cpu, Layout, Database, Sparkles, Wrench]
 export const StudioSkillsSpatial: React.FC = () => {
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    const el = document.querySelector<HTMLElement>('#contact');
+    if (!el) return;
     const smoother = getSmoother();
     if (smoother) {
-      smoother.scrollTo('#contact', true);
-    } else {
-      const el = document.querySelector('#contact');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
+      const content = document.querySelector<HTMLElement>('#smooth-content');
+      if (content) {
+        const speed = (smoother as any).vars?.speed || 1;
+        const targetTop = el.getBoundingClientRect().top - content.getBoundingClientRect().top;
+        smoother.scrollTo(targetTop / speed, true);
+      } else {
+        smoother.scrollTo('#contact', true);
       }
+    } else {
+      el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
