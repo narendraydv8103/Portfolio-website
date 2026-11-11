@@ -891,12 +891,28 @@ body {
   text-transform: none !important;
 }
 
-/* 8. Project Tabs & Navigation Buttons: Satoshi 500 */
-#projects .no-scrollbar button {
+/* 8. Project Tabs: Satoshi 14–15px, Underline Tab Style */
+#projects .project-tab {
   font-family: var(--font-sans) !important;
-  font-size: 0.8125rem !important;
+  font-size: clamp(14px, 1.05vw, 15px) !important;
+  letter-spacing: normal !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#projects .project-tab[aria-selected="true"] {
+  font-weight: 700 !important;
+  color: #eef1f6 !important;
+}
+
+#projects .project-tab[aria-selected="false"] {
   font-weight: 500 !important;
-  letter-spacing: 0.02em !important;
+  color: #8a94a6 !important;
+}
+
+#projects .project-tab[aria-selected="false"]:hover {
+  color: #d1d5db !important;
 }
 
 /* 9. KAVACH Simulator & Terminal Console: Geist Mono (Preserved for real terminal telemetry) */

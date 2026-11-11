@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ChevronLeft,
   ChevronRight,
@@ -203,6 +203,8 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
   const [currentIndex, setCurrentIndex] = useState(activeProjectIndex);
   const [selectedModalProject, setSelectedModalProject] = useState<Project | null>(null);
   const [explainerView, setExplainerView] = useState<'pipeline' | 'screenshot'>('pipeline');
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const isFirstTabRender = useRef(true);
 
   /* ========================================================================= */
   /* FALLBACK INTERACTIVE STATE (PRESERVED FOR EASY REVERT)                    */
@@ -250,6 +252,22 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
   // Reset view to pipeline on project change
   useEffect(() => {
     setExplainerView('pipeline');
+  }, [currentIndex]);
+
+  // Smoothly scroll active tab into view horizontally on mobile when project changes
+  useEffect(() => {
+    if (isFirstTabRender.current) {
+      isFirstTabRender.current = false;
+      return;
+    }
+    const activeTabEl = tabRefs.current[currentIndex];
+    if (activeTabEl) {
+      activeTabEl.scrollIntoView({
+        inline: 'center',
+        block: 'nearest',
+        behavior: 'smooth',
+      });
+    }
   }, [currentIndex]);
 
   // Synchronize 3D world on initial mount
@@ -301,33 +319,62 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
           <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-[#5eead4] to-transparent mt-4" />
         </div>
 
-        {/* Quick Project Tabs Bar */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
-          {projects.map((proj, idx) => {
-            const isActive = idx === currentIndex;
-            return (
-              <button
-                key={proj.id}
-                onClick={() => handleSelect(idx)}
-                className={`px-4 py-2 rounded-full text-xs font-sans font-medium whitespace-nowrap transition-all duration-300 flex items-center gap-2 border ${
-                  isActive
-                    ? 'bg-zinc-800 text-white border-white/30 shadow-lg scale-105'
-                    : 'bg-zinc-900/60 text-zinc-400 border-white/10 hover:text-zinc-200'
-                }`}
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: proj.accentColor }}
-                />
-                <span className="font-bold">{proj.number}</span>
-                <span>{proj.title.split('/')[0].trim()}</span>
-              </button>
-            );
-          })}
+        {/* Project Underline Tabs Bar */}
+        <div className="w-full flex justify-center mb-10 sm:mb-12">
+          <div
+            role="tablist"
+            aria-label="Project showcase tabs"
+            className="project-tabs-container flex items-center justify-start sm:justify-center gap-6 sm:gap-7 overflow-x-auto no-scrollbar max-w-full px-4 sm:px-0 border-b border-[#1c2431]"
+            style={{
+              scrollSnapType: 'x proximity',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {projects.map((proj, idx) => {
+              const isActive = idx === currentIndex;
+              return (
+                <button
+                  key={proj.id}
+                  ref={(el) => {
+                    tabRefs.current[idx] = el;
+                  }}
+                  role="tab"
+                  id={`project-tab-${proj.id}`}
+                  aria-selected={isActive}
+                  aria-controls={`project-panel-${proj.id}`}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => handleSelect(idx)}
+                  className={`project-tab relative shrink-0 min-h-[44px] py-3 px-1 sm:px-1.5 text-sm sm:text-[15px] font-sans transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5eead4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08080a] select-none ${
+                    isActive
+                      ? 'text-[#eef1f6] font-bold'
+                      : 'text-[#8a94a6] hover:text-[#d1d5db] font-medium'
+                  }`}
+                  style={{
+                    scrollSnapAlign: 'center',
+                  }}
+                >
+                  <span>{proj.title.split('/')[0].trim()}</span>
+                  <span
+                    aria-hidden="true"
+                    className={`absolute left-0 right-0 -bottom-[1px] h-[2px] transition-all duration-200 pointer-events-none ${
+                      isActive
+                        ? 'bg-[#5eead4] opacity-100'
+                        : 'bg-transparent opacity-0'
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* CINEMATIC PROJECT SHOWCASE CONTAINER */}
-        <div className="relative rounded-3xl bg-zinc-950/80 border border-white/10 p-6 sm:p-10 backdrop-blur-xl shadow-2xl overflow-hidden">
+        <div
+          role="tabpanel"
+          id={`project-panel-${currentProject.id}`}
+          aria-labelledby={`project-tab-${currentProject.id}`}
+          className="relative rounded-3xl bg-zinc-950/80 border border-white/10 p-6 sm:p-10 backdrop-blur-xl shadow-2xl overflow-hidden"
+        >
           {/* Ambient Corner Accent Lighting */}
           <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[110px] opacity-20 pointer-events-none transition-colors duration-700"
