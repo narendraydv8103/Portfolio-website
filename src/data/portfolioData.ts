@@ -131,12 +131,6 @@ export const portfolioData = {
       description: "Completed Class 10 with 94.8% distinction, building strong mathematical foundations and analytical curiosity.",
     },
     {
-      year: "2023",
-      title: "Class 11 Science Stream",
-      stack: "Physics, Chemistry & Mathematics",
-      description: "Pursued rigorous physical sciences and mathematics, establishing foundational analytical problem-solving habits.",
-    },
-    {
       year: "2024",
       title: "Class 12 Completed",
       stack: "93.6% Distinction",
