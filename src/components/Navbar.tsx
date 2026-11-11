@@ -93,7 +93,7 @@ function TopNavResumeLink() {
   );
 }
 
-// Sidebar nav link with dot indicator + magnetic
+// Sidebar nav link with dot indicator
 function SideNavBtn({
   label,
   onClick,
@@ -105,22 +105,28 @@ function SideNavBtn({
   style?: React.CSSProperties;
   isActive?: boolean;
 }) {
-  const ref = useMagnetic<HTMLButtonElement>(0.18);
+  const isWhatICanBuild = label === "What I Can Build";
   return (
     <button
-      ref={ref}
       type="button"
       className={`nav-link${isActive ? " active" : ""}`}
       style={style}
       onClick={onClick}
     >
       <span className="side-dot" />
-      {label}
+      {isWhatICanBuild ? (
+        <span className="nav-link-multiline">
+          <span>What I</span>
+          <span>Can Build</span>
+        </span>
+      ) : (
+        label
+      )}
     </button>
   );
 }
 
-// Sidebar resume link with dot indicator + magnetic
+// Sidebar resume link with dot indicator
 function SideNavResumeLink({
   style,
   onClick,
@@ -128,10 +134,8 @@ function SideNavResumeLink({
   style?: React.CSSProperties;
   onClick: () => void;
 }) {
-  const ref = useMagnetic<HTMLAnchorElement>(0.18);
   return (
     <a
-      ref={ref}
       href="/Narendra-Singh-Yadav-Resume.pdf"
       download="Narendra-Singh-Yadav-Resume.pdf"
       target="_blank"
@@ -139,8 +143,6 @@ function SideNavResumeLink({
       className="nav-link"
       style={{
         textDecoration: "none",
-        display: "flex",
-        alignItems: "flex-start",
         ...style,
       }}
       onClick={onClick}

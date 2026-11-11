@@ -223,14 +223,16 @@
   height: 100vh;
   width: clamp(340px, 40vw, 540px);
   background: #0c0c0c;
-  padding: 12vh 8vw 8vh;
+  padding: clamp(60px, 8vh, 80px) 44px clamp(40px, 6vh, 60px) 60px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   z-index: 995;
   transform: translateX(calc(100% + 6vw));
   transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .side-nav.active {
@@ -240,12 +242,12 @@
 /* ── Section headings ── */
 .nav-heading {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: #71717a;
-  text-transform: uppercase;
-  margin: 0 0 2rem;
+  font-size: 11px;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  text-transform: uppercase;
+  margin: 0 0 16px;
 }
 
 /* ── Sidebar nav links ── */
@@ -260,30 +262,28 @@
   padding: 0;
   text-align: left;
   font-family: var(--font-sans);
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 500;
   line-height: 1.15;
-  color: #eae5ec;
+  color: #a1a1aa;
   cursor: pointer;
   display: flex;
   align-items: flex-start;
+  position: relative;
   gap: 0;
   opacity: 0;
   transform: translateX(7vw);
   transition:
     transform 0.75s cubic-bezier(0.7, 0, 0.2, 1),
     opacity 0.65s ease,
-    color 0.25s ease;
-  letter-spacing: -0.01em;
+    color 0.2s ease;
+  letter-spacing: -0.02em;
   font-variant-numeric: lining-nums;
   will-change: transform;
-  text-wrap: balance;
-  word-break: keep-all;
-  overflow-wrap: normal;
 }
 
 .nav-link + .nav-link {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .side-nav.active .nav-link {
@@ -292,54 +292,67 @@
 }
 
 .nav-link:hover {
-  color: #eae5ec;
+  color: #ffffff;
 }
 
-/* dot in front of sidebar links */
+.nav-link.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Deliberate compact two-line label for What I Can Build */
+.nav-link-multiline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.15;
+}
+
+/* Small and subtle active bullet ONLY on active link (Home) */
 .nav-link .side-dot {
-  display: block;
-  width: 6px;
-  height: 6px;
+  display: none;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #eae5ec;
   flex-shrink: 0;
-  margin-top: calc(0.575em - 3px);
-  margin-right: 0;
-  transform: scale(0) translateX(-12px);
-  opacity: 0;
-  transition:
-    transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity 0.22s ease,
-    margin-right 0.28s ease;
+  position: absolute;
+  right: calc(100% + 11px);
+  top: 0.575em;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
-.nav-link:hover .side-dot,
 .nav-link.active .side-dot {
-  transform: scale(1) translateX(0);
-  opacity: 1;
-  margin-right: 12px;
+  display: block;
 }
 
 /* ── Social links ── */
 .nav-socials {
-  gap: 0;
+  margin-top: 40px;
 }
 
 .nav-social-link {
   font-family: var(--font-sans);
-  font-size: 0.875rem;
-  color: #94a3b8;
-  text-decoration: none;
-  padding: 0.3rem 0;
-  display: block;
-  letter-spacing: 0.04em;
+  font-size: 15px;
   font-weight: 400;
+  line-height: 1.5;
+  color: #71717a;
+  text-decoration: none;
+  padding: 0;
+  display: block;
+  letter-spacing: normal;
   opacity: 0;
   transform: translateX(4vw);
   transition:
     transform 0.65s cubic-bezier(0.7, 0, 0.2, 1),
     opacity 0.55s ease,
-    color 0.25s ease;
+    color 0.2s ease;
+}
+
+.nav-social-link + .nav-social-link {
+  margin-top: 10px;
 }
 
 .side-nav.active .nav-social-link {
@@ -351,16 +364,42 @@
   color: #eae5ec;
 }
 
-/* ── Side drawer on small phones ── */
+/* ── Responsive adjustments ── */
+@media screen and (max-width: 640px) {
+  .side-nav {
+    padding: 70px 28px 40px 56px;
+  }
+
+  .nav-link {
+    font-size: 26px;
+  }
+
+  .nav-link + .nav-link {
+    margin-top: 14px;
+  }
+
+  .nav-socials {
+    margin-top: 32px;
+  }
+
+  .nav-social-link {
+    font-size: 14px;
+  }
+
+  .nav-social-link + .nav-social-link {
+    margin-top: 8px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .side-nav {
     width: 100%;
     box-sizing: border-box;
-    padding: 14vh 10vw 8vh;
+    padding: 70px 24px 36px 56px;
     transform: translateX(100%);
   }
 
   .nav-heading {
-    margin-bottom: 1.2rem;
+    margin-bottom: 14px;
   }
 }
