@@ -50,6 +50,7 @@ export const FloatingChatbot: React.FC = () => {
     'What are his skills?',
     'What projects has he built?',
     'What is his education & CGPA?',
+    'What courses & certifications has he completed?',
     'Is he looking for internships?',
     'How can I contact him?',
   ];
@@ -67,10 +68,10 @@ export const FloatingChatbot: React.FC = () => {
           action = { label: 'View Academic Record', targetHref: '#about' };
         } else if (faq.keywords.includes('skills')) {
           action = { label: 'View Categorized Skills', targetHref: '#skills' };
+        } else if (faq.keywords.includes('courses') || faq.keywords.includes('certifications') || faq.keywords.includes('achievements')) {
+          action = { label: 'View Verified Honors & Courses', targetHref: '#journey' };
         } else if (faq.keywords.includes('contact') || faq.keywords.includes('email') || faq.keywords.includes('internship')) {
           action = { label: 'Go to Contact / Email', targetHref: '#contact' };
-        } else if (faq.keywords.includes('achievements')) {
-          action = { label: 'View Verified Achievements', targetHref: '#achievements' };
         }
         return { text: faq.answer, action };
       }
@@ -91,17 +92,24 @@ export const FloatingChatbot: React.FC = () => {
       };
     }
 
+    if (q.includes('course') || q.includes('certif') || q.includes('nptel') || q.includes('isro') || q.includes('iirs')) {
+      return {
+        text: "Neeraj's verified learning & achievements:\n• NPTEL / Swayam: Programming in Modern C++ (IIT Kharagpur)\n• ISRO IIRS: Distance Learning Outreach Programme (In Progress)\n• DataForge 2026: Kharagpur Data Analytics Group, IIT Kharagpur\n• Hack Devengers 2.0: E-Cell IIT Bombay & Devengers\n• Hacktoberfest Hack Day Indore: PyData Indore\n• Academic Performance: B.Tech 1st Year with 8.45 CGPA at IPS Academy.",
+        action: { label: 'View Verified Honors & Courses', targetHref: '#journey' }
+      };
+    }
+
     // Specific individual checks
     if (q.includes('c++') || q.includes('python') || q.includes('oop')) {
       return {
-        text: "Neeraj is proficient in C++ and Python with strong focus on Object-Oriented Programming (OOP) and algorithmic problem solving. He topped his department in 1st year and is actively developing his software engineering fundamentals.",
+        text: "Neeraj is proficient in C++ (Modern C++) and Python with strong focus on Object-Oriented Programming (OOP), Data Structures & Algorithms, and clean software architecture. He completed his B.Tech 1st year with an 8.45 CGPA and is actively building practical software systems.",
         action: { label: 'See Skills', targetHref: '#skills' }
       };
     }
 
     if (q.includes('college') || q.includes('institute') || q.includes('ips') || q.includes('indore')) {
       return {
-        text: `Neeraj is pursuing his B.Tech in Electrical & Electronics Engineering at IPS Academy, Institute of Engineering & Science, Indore. He is currently in his 2nd Year (3rd Semester) with an outstanding 1-Year CGPA of 8.95 (1st Rank Topper).`,
+        text: `Neeraj is pursuing his B.Tech in Electrical & Electronics Engineering at IPS Academy, Institute of Engineering & Science, Indore. He is currently in his 2nd Year (3rd Semester) with an 8.45 First-Year CGPA.`,
         action: { label: 'View About Section', targetHref: '#about' }
       };
     }

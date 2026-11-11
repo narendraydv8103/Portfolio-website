@@ -11,6 +11,11 @@ export interface SkillItem {
   tag: string;
 }
 
+export interface SkillCategory {
+  title: string;
+  skills: Array<{ name: string; tag: string }>;
+}
+
 export interface Project {
   id: string;
   number: string;
@@ -24,6 +29,8 @@ export interface Project {
   tags: string[];
   features: string[];
   architecture: string;
+  githubUrl?: string;
+  liveDemoUrl?: string;
   interactiveData: {
     badge: string;
     metrics: Array<{ label: string; value: string }>;
@@ -35,11 +42,13 @@ export interface Achievement {
   id: string;
   title: string;
   organizer: string;
-  category: 'Competition' | 'Hackathon' | 'Academic' | 'Open Source';
+  category: 'Competition' | 'Hackathon' | 'Academic' | 'Open Source' | 'Course' | 'Certification';
   description: string;
   year: string;
   highlight?: string;
+  status?: 'Completed' | 'In Progress' | 'Verified Credential';
   certificateUrl?: string;
+  verificationUrl?: string;
 }
 
 export interface ServiceItem {
@@ -55,12 +64,13 @@ export const portfolioData = {
   profile: {
     fullName: "Narendra Singh Yadav",
     preferredName: "Neeraj",
-    displayName: "Neeraj",
-    role: "Student Developer | AI & Software Development",
-    subRole: "B.Tech — Electrical & Electronics Engineering",
-    institution: "IPS Academy, Indore",
+    displayName: "Narendra Singh Yadav (Neeraj)",
+    role: "Software Developer & B.Tech EEE Student",
+    subRole: "Electrical & Electronics Engineering",
+    institution: "IPS Academy, Institute of Engineering & Science, Indore",
     department: "Electrical & Electronics Engineering",
     currentStatus: "2nd Year / 3rd Semester",
+    firstYearCgpa: "8.45",
     location: "Indore, Madhya Pradesh, India",
     email: "narendraydv8103@gmail.com",
     phone: "+91 8103537584",
@@ -70,27 +80,27 @@ export const portfolioData = {
     instagramUrl: "https://www.instagram.com/narendraydvv/",
     linkedinUrl: "https://www.linkedin.com/in/narendrayadav07/",
     githubUrl: "https://github.com/narendraydv8103",
-    heroManifesto: "Building software, exploring AI, and turning ideas into practical products.",
-    heroSubtext: "Student Developer exploring software engineering, applied AI/ML, and automation with strong foundations in C++ and Python.",
+    heroManifesto: "Building software, exploring AI, and solving real-world problems through technology.",
+    heroSubtext: "B.Tech EEE student at IPS Academy Indore with an 8.45 First-Year CGPA, exploring software engineering, applied AI, and practical systems.",
     statusBadge: "Located in India • Indore, MP",
     footerCopyright: "© 2026 Narendra Singh Yadav. Built with curiosity and code.",
   },
 
   about: {
-    lead: "I am a B.Tech Electrical & Electronics Engineering student at IPS Academy, Indore, currently exploring software development, AI/ML and automation.",
+    lead: "I am a B.Tech Electrical & Electronics Engineering student at IPS Academy, Institute of Engineering & Science, Indore, currently in my 2nd Year (3rd Semester) with an 8.45 First-Year CGPA.",
     paragraphs: [
-      "I started my coding journey in my second year and enjoy turning ideas into practical projects while continuously learning new technologies.",
-      "Combining disciplined problem solving in C++ and Python with modern software development, voice interaction systems, and applied machine learning.",
-      "Open to software development internships, collaborations, hackathons and opportunities to learn and build."
+      "I started my coding journey in my second year and enjoy turning ideas into practical software while continuously learning modern systems.",
+      "Combining disciplined problem solving in C++ and Python with modern web development, applied AI, and hands-on projects.",
+      "Actively seeking software development and engineering internships for 2026, collaborative hackathons, and opportunities to learn and build."
     ]
   },
 
   academicHighlights: [
     {
       label: "B.Tech 1st Year",
-      value: "8.43 CGPA",
-      subtext: "1st Position / Academic Topper",
-      badge: "Rank 1",
+      value: "8.45 CGPA",
+      subtext: "First-Year Academic Performance",
+      badge: "Verified 8.45",
     },
     {
       label: "Class 12th Board",
@@ -110,9 +120,9 @@ export const portfolioData = {
       subtext: "2nd Year • B.Tech EEE",
       badge: "Active",
     },
-  ],
+  ] as AcademicHighlight[],
 
-  // EXACT TIMELINE SPECIFIED BY USER (2022 to 2026)
+  // CHRONOLOGICAL TIMELINE (2022 to 2026)
   journeyMilestones: [
     {
       year: "2022",
@@ -135,26 +145,26 @@ export const portfolioData = {
     {
       year: "2024–25",
       title: "JEE Preparation (Kota)",
-      stack: "1-Year Academic Drop",
-      description: "Took a focused 1-year drop after Class 12 and prepared for JEE from Kota, honing resilience and high-level problem-solving.",
+      stack: "Focused Academic Preparation",
+      description: "Took a focused 1-year drop after Class 12 and prepared for JEE from Kota, honing resilience and high-level analytical problem-solving.",
     },
     {
       year: "2025",
       title: "Joined IPS Academy, Indore",
       stack: "B.Tech — Electrical & Electronics Engineering",
-      description: "Enrolled in B.Tech Electrical & Electronics Engineering at IPS Academy, Indore, establishing a high academic benchmark.",
+      description: "Enrolled in B.Tech Electrical & Electronics Engineering at IPS Academy, Institute of Engineering & Science, Indore.",
     },
     {
       year: "2025–26",
       title: "Completed B.Tech 1st Year",
-      stack: "8.95 CGPA • 1st Position Topper",
-      description: "Completed 1st Year with an exceptional 8.95 CGPA, securing 1st Position across the entire department.",
+      stack: "8.45 CGPA • Academic Foundation",
+      description: "Completed 1st Year B.Tech in Electrical & Electronics Engineering with an 8.45 CGPA, establishing disciplined engineering fundamentals.",
     },
     {
       year: "2026",
-      title: "Entered 2nd Year / 3rd Semester",
-      stack: "Coding & Software Journey",
-      description: "Started my coding and software development journey. Began with C++, Python, OOP, and Problem Solving. Currently exploring React, TypeScript, AI/ML, Automation, and Modern Web Development while building practical software and AI projects.",
+      title: "2nd Year / 3rd Semester & Software Exploration",
+      stack: "Software Development, AI & Modern Systems",
+      description: "Actively building software projects in C++, Python, and modern web systems. Enrolled in NPTEL Programming in Modern C++ and ISRO IIRS outreach learning programs.",
     },
   ],
 
@@ -178,54 +188,46 @@ export const portfolioData = {
   whatICanBuild: {
     tagline: "INDEPENDENT DEVELOPER SERVICES",
     heading: "What I Can Build",
-    positioning: "I design and build websites, digital experiences and AI-powered solutions for individuals, startups and businesses.",
-    subtext: "As an independent student developer, I take on suitable freelance projects and engineering collaborations to craft focused, modern digital solutions without agency overhead.",
-    cta: {
-      heading: "Have an idea? Let’s build it.",
-      supporting: "Available for freelance projects, collaborations and opportunities to build meaningful digital products.",
-      buttonText: "Let's Build It",
-      href: "#contact"
-    },
     services: [
       {
-        id: "ui-web-design",
+        id: "web-apps",
         number: "01",
-        title: "UI / Web Design",
-        subtitle: "Visual craft, immersive layouts & modern interfaces",
+        title: "Web Applications",
+        subtitle: "Full-stack apps, interactive UI & modern frontends",
         capabilities: [
-          "Modern website UI",
-          "Landing pages",
-          "Portfolio websites",
-          "Responsive interfaces",
-          "Interactive / 3D web experiences"
+          "Interactive React applications",
+          "Responsive, fluid web interfaces",
+          "Component-driven architectures",
+          "State management & client data sync",
+          "Modern styling with Tailwind CSS"
         ],
-        tags: ["Modern UI", "Interactive 3D", "Responsive", "Design Systems", "Web Aesthetics"]
+        tags: ["React 19", "TypeScript", "Tailwind CSS", "Vite", "Responsive Design"]
       },
       {
-        id: "website-development",
+        id: "landing-pages",
         number: "02",
-        title: "Website Development",
-        subtitle: "Fast, performant & responsive frontend development",
+        title: "Landing Pages & Portfolios",
+        subtitle: "High-impact visual showcases with smooth interactions",
         capabilities: [
-          "Business websites",
-          "E-commerce websites",
-          "Portfolio websites",
-          "Custom web applications",
-          "Responsive frontend development"
+          "Spatial 3D web experiences (Three.js)",
+          "Scroll-choreographed animations (GSAP)",
+          "Performance-optimized asset pipelines",
+          "Clean, memorable typography & layout",
+          "Custom interaction design"
         ],
-        tags: ["React & Vite", "TypeScript", "Tailwind CSS", "Next.js", "Clean Architecture"]
+        tags: ["Three.js", "GSAP ScrollTrigger", "Lenis Physics", "3D Canvas", "Web Typography"]
       },
       {
-        id: "ai-integration",
+        id: "ai-interfaces",
         number: "03",
-        title: "AI Integration",
-        subtitle: "Practical intelligence & conversational product features",
+        title: "AI Interfaces & Chatbots",
+        subtitle: "Conversational assistants, voice tools & prompt workflows",
         capabilities: [
-          "AI-powered features",
-          "AI chat interfaces",
-          "AI assistants",
-          "LLM / API integration",
-          "AI-based product features"
+          "Interactive FAQ & knowledge assistants",
+          "Real-time voice assistant architectures",
+          "LLM API integration & prompt structuring",
+          "Interruption-resilient audio pipelines",
+          "Context-aware workflow tools"
         ],
         tags: ["LLM APIs", "AI Assistants", "Prompt Engineering", "Chat Interfaces", "AI Workflows"]
       },
@@ -260,6 +262,61 @@ export const portfolioData = {
     ]
   },
 
+  skillsCategories: [
+    {
+      title: "Programming Languages",
+      skills: [
+        { name: "C++", tag: "Core Language / Modern C++" },
+        { name: "Python", tag: "Automation & Scripting" },
+        { name: "TypeScript", tag: "Type-Safe Development" },
+        { name: "JavaScript", tag: "Interactive Web" },
+      ],
+    },
+    {
+      title: "Core Fundamentals",
+      skills: [
+        { name: "OOP", tag: "Object-Oriented Design" },
+        { name: "Problem Solving", tag: "Data Structures & Algorithms" },
+        { name: "Software Fundamentals", tag: "Clean Architecture" },
+      ],
+    },
+    {
+      title: "Frontend Development",
+      skills: [
+        { name: "React", tag: "Component Architecture" },
+        { name: "Tailwind CSS", tag: "Modern Responsive Layouts" },
+        { name: "Three.js", tag: "WebGL & 3D Interactive Design" },
+        { name: "GSAP", tag: "Motion & ScrollTrigger" },
+        { name: "Vite", tag: "Build Tooling & Optimization" },
+      ],
+    },
+    {
+      title: "Backend & Systems",
+      skills: [
+        { name: "FastAPI", tag: "Python REST APIs" },
+        { name: "SQL", tag: "Relational Queries" },
+        { name: "Supabase", tag: "PostgreSQL & Auth" },
+        { name: "API Integration", tag: "REST & Webhooks" },
+      ],
+    },
+    {
+      title: "Applied AI & Automation",
+      skills: [
+        { name: "AI/LLM Integration", tag: "API Orchestration" },
+        { name: "Voice Interaction", tag: "Real-Time Conversational Systems" },
+        { name: "Workflow Automation", tag: "Custom Bots & Task Scripts" },
+      ],
+    },
+    {
+      title: "Tools & Platforms",
+      skills: [
+        { name: "Git & GitHub", tag: "Version Control & Collaboration" },
+        { name: "VS Code", tag: "Development Environment" },
+        { name: "Vercel", tag: "Production Web Deployment" },
+      ],
+    },
+  ] as SkillCategory[],
+
   skillsList: [
     // Core
     { name: "C++", category: "Core Discipline", tag: "Primary Language" },
@@ -268,15 +325,16 @@ export const portfolioData = {
     { name: "Problem Solving", category: "Core Discipline", tag: "Algorithms & Logic" },
     { name: "Software Development Fundamentals", category: "Core Discipline", tag: "Clean Architecture" },
 
-    // Currently Exploring
+    // Web & Systems
     { name: "React", category: "Currently Exploring", tag: "Frontend UI" },
     { name: "TypeScript", category: "Currently Exploring", tag: "Type-Safe Web" },
-    { name: "AI/ML", category: "Currently Exploring", tag: "Intelligent Systems" },
+    { name: "Three.js", category: "Currently Exploring", tag: "3D Graphics" },
+    { name: "FastAPI", category: "Currently Exploring", tag: "Python Backend" },
+    { name: "AI/ML Integration", category: "Currently Exploring", tag: "Intelligent Systems" },
     { name: "Automation", category: "Currently Exploring", tag: "Workflow Bots" },
-    { name: "Modern Web Development", category: "Currently Exploring", tag: "Interactive Web" },
   ],
 
-  // 5 CORE PROJECTS (PORTFOLIO, KAVACH, VOICEFORGE, EMBERHOLD, BILLSHIELD)
+  // 5 FLAGSHIP PROJECTS (PORTFOLIO, KAVACH, VOICEFORGE, EMBERHOLD, BILLSHIELD)
   projects: [
     {
       id: "portfolio",
@@ -289,11 +347,13 @@ export const portfolioData = {
       visualTheme: "portfolio",
       accentColor: "#5eead4", // Signature spatial turquoise
       tags: ["React 19", "Three.js", "TypeScript", "GSAP & Lenis", "Tailwind CSS v4", "Vite"],
+      githubUrl: "https://github.com/narendraydv8103/Portfolio-website",
+      liveDemoUrl: "https://narendrasinghyadavportfolio.vercel.app/",
       features: [
         "Dynamic Three.js 3D geometric world synchronized with scroll and active project views",
         "Deep-dive technical architecture inspector with detailed specs and telemetry breakdown",
         "Integrated virtual assistant (Neeraj AI) for instant academic and engineering queries",
-        "Strict typography design system using Playfair Display, Jost, and JetBrains Mono"
+        "Strict typography design system with optimized performance and responsive glassmorphism"
       ],
       architecture: "Client-side spatial web application orchestrating Three.js WebGL scenes, Lenis smooth-scroll physics, GSAP timeline triggers, and responsive glassmorphic interfaces.",
       interactiveData: {
@@ -447,12 +507,13 @@ export const portfolioData = {
   achievements: [
     {
       id: "academic-achievement",
-      title: "Academic Achievement",
-      organizer: "IPS Academy, Indore",
+      title: "Academic Performance — 1st Year B.Tech",
+      organizer: "IPS Academy, Institute of Engineering & Science, Indore",
       category: "Academic",
-      year: "2025–2026",
-      description: "1st Position — B.Tech 1st Year with an exceptional 8.95 CGPA.",
-      highlight: "1st Position • 8.95 CGPA",
+      year: "2024–2025",
+      description: "Completed 1st Year B.Tech in Electrical & Electronics Engineering with an 8.45 CGPA, demonstrating strong analytical and engineering discipline.",
+      highlight: "8.45 First-Year CGPA",
+      status: "Completed",
       certificateUrl: "/certificates/Academic Certificate.jpeg"
     },
     {
@@ -461,8 +522,9 @@ export const portfolioData = {
       organizer: "Kharagpur Data Analytics Group, IIT Kharagpur",
       category: "Competition",
       year: "2026",
-      description: "Competed in DataForge 2026 hosted by Kharagpur Data Analytics Group, IIT Kharagpur.",
+      description: "Competed in DataForge 2026 national data analytics challenge hosted by Kharagpur Data Analytics Group, IIT Kharagpur.",
       highlight: "KDAG, IIT Kharagpur",
+      status: "Completed",
       certificateUrl: "/certificates/Dataforge hackathon certificate.pdf"
     },
     {
@@ -471,8 +533,9 @@ export const portfolioData = {
       organizer: "Devengers / E-Cell IIT Bombay",
       category: "Hackathon",
       year: "2025",
-      description: "Certificate of Participation — High-intensity hackathon held with E-Cell IIT Bombay.",
+      description: "Certificate of Participation — High-intensity national hackathon held in collaboration with E-Cell IIT Bombay.",
       highlight: "Certificate of Participation",
+      status: "Completed",
       certificateUrl: "/certificates/Certificate of Appreciation.jpg"
     },
     {
@@ -481,36 +544,83 @@ export const portfolioData = {
       organizer: "PyData Indore & Tech Community",
       category: "Open Source",
       year: "2025",
-      description: "Certificate of Participation — Open source developer sprint and Python workshop.",
+      description: "Certificate of Participation — Open source developer sprint and Python community workshop.",
       highlight: "Certificate of Participation",
+      status: "Completed",
       certificateUrl: "/certificates/HactoberFest Certificate.jpeg"
+    },
+    {
+      id: "nptel-modern-cpp",
+      title: "Programming in Modern C++",
+      organizer: "NPTEL / Swayam (IIT Kharagpur)",
+      category: "Course",
+      year: "2025–2026",
+      description: "Rigorous coursework in Modern C++ (C++11/14/17/20), covering object-oriented architecture, STL algorithms & containers, templates, move semantics, and memory management.",
+      highlight: "Modern C++ • NPTEL",
+      status: "Completed",
+      certificateUrl: "/certificates/NPTEL Certificate.pdf"
+    },
+    {
+      id: "isro-iirs",
+      title: "ISRO IIRS Outreach Programme",
+      organizer: "Indian Institute of Remote Sensing (ISRO)",
+      category: "Course",
+      year: "2026",
+      description: "Specialized distance learning course by ISRO Indian Institute of Remote Sensing covering remote sensing principles, geospatial technologies, and earth observation data systems.",
+      highlight: "In Progress • ISRO IIRS",
+      status: "In Progress"
     }
   ] as Achievement[],
+
+  galleryPhotos: [
+    { src: '/images/gallery/IMG20251110064436.jpg', alt: 'Mountain peak scenic overlook' },
+    { src: '/images/gallery/IMG_20260118_232048.jpg', alt: 'Ambient cafe profile portrait' },
+    { src: '/images/gallery/IMG20251110072448.jpg', alt: 'Forested mountain valley view' },
+    { src: '/images/gallery/IMG_20260902_161059.jpg', alt: 'Architectural staircase portrait' },
+    { src: '/images/gallery/IMG_20251111_024648.jpg', alt: 'Historic fort hilltop view' },
+    { src: '/images/gallery/IMG_20260118_232929.jpg', alt: 'Warm cafe portrait with pampas' },
+    { src: '/images/gallery/IMG_20260912_184523.jpg', alt: 'Misty mountains and river stones' },
+    { src: '/images/gallery/IMG20251110081816.jpg', alt: 'Scenic mountain ridge trail' },
+    { src: '/images/gallery/IMG_1777.jpg', alt: 'Campus architectural portrait' },
+    { src: '/images/gallery/IMG_20251210_183907_1.jpg', alt: 'Evening cityscape skyline' },
+    { src: '/images/gallery/IMG_20251210_202627.jpg', alt: 'Night ambient street atmosphere' },
+    { src: '/images/gallery/IMG_20251220_202055.jpg', alt: 'City promenade evening lights' },
+    { src: '/images/gallery/IMG_20260324_103743.jpg', alt: 'Daytime outdoor landscape' },
+    { src: '/images/gallery/IMG_20260413_133230.jpg', alt: 'Green campus walkway' },
+    { src: '/images/gallery/IMG_3622.jpg', alt: 'Casual outdoor portrait' },
+    { src: '/images/gallery/IMG_3788.jpeg', alt: 'Warm twilight ambient moment' },
+    { src: '/images/gallery/IMG_20260912_185225.jpg', alt: 'Scenic misty winding mountain road' },
+    { src: '/images/gallery/IMG_20260118_232200.jpg', alt: 'Full-height indoor architectural portrait' },
+  ],
 
   faqKnowledge: [
     {
       keywords: ["who", "about", "neeraj", "narendra", "intro", "background"],
-      answer: "Neeraj (Narendra Singh Yadav) is a B.Tech Electrical & Electronics Engineering student at IPS Academy, Indore. He is the department Academic Topper (8.95 CGPA, 1st Rank) passionate about software engineering, C++, Python, and AI systems."
+      answer: "Narendra Singh Yadav (Neeraj) is a B.Tech Electrical & Electronics Engineering student at IPS Academy, Institute of Engineering & Science, Indore (2nd Year / 3rd Semester) with an 8.45 First-Year CGPA. He is passionate about software engineering, C++, Python, and intelligent applications."
     },
     {
       keywords: ["projects", "portfolio", "kavach", "voiceforge", "emberhold", "billshield"],
-      answer: "Neeraj's portfolio features five focused engineering projects:\n1. Interactive 3D Portfolio Website (Spatial Web & Three.js showcase — in development)\n2. KAVACH / GoldenHour (Cyber-forensics & offline graph intelligence)\n3. VoiceForge (Interruption-Resilient real-time voice AI)\n4. Emberhold / Life RPG (Dark-fantasy gamified self-discipline system)\n5. BillShield AI (Healthcare fintech hospital bill auditor & dispute dossier generator)."
+      answer: "Neeraj's portfolio features five focused engineering projects:\n1. Interactive 3D Portfolio Website (Spatial Web & Three.js showcase)\n2. KAVACH / GoldenHour (Cyber-forensics & offline graph intelligence)\n3. VoiceForge (Interruption-Resilient real-time voice AI)\n4. Emberhold / Life RPG (Dark-fantasy gamified self-discipline system)\n5. BillShield AI (Healthcare fintech hospital bill auditor & dispute dossier generator)."
     },
     {
-      keywords: ["skills", "languages", "c++", "python", "oop", "tech"],
-      answer: "Neeraj's established core skills are C++, Python, Object-Oriented Programming (OOP), Data Structures & Problem Solving, and Software Development fundamentals. He is actively exploring modern frontend tooling and applied AI/ML."
+      keywords: ["skills", "languages", "c++", "python", "oop", "tech", "react", "typescript"],
+      answer: "Neeraj's core technical skills include:\n• Languages: C++ (Modern C++), Python, TypeScript, JavaScript\n• Fundamentals: Object-Oriented Programming (OOP), Data Structures & Problem Solving, Software Fundamentals\n• Frontend: React, Tailwind CSS, Three.js, GSAP, Vite\n• Backend & Systems: FastAPI, SQL, Supabase, API Integration\n• Applied AI & Tools: AI/LLM Integration, Git, GitHub."
     },
     {
-      keywords: ["education", "cgpa", "college", "marks", "ips", "indore", "topper"],
-      answer: "Education background:\n• B.Tech EEE at IPS Academy, Indore (2nd Year / 3rd Sem)\n• 1-Year CGPA: 8.95 (1st Position / Academic Topper, Session 2025–2026)\n• Class 12th: 93.6%\n• Class 10th: 94.8%."
+      keywords: ["education", "cgpa", "college", "marks", "ips", "indore", "academic"],
+      answer: "Education background:\n• B.Tech EEE at IPS Academy, Institute of Engineering & Science, Indore (2nd Year / 3rd Semester)\n• 1st Year CGPA: 8.45\n• Class 12th Board: 93.6% (PCM Distinction)\n• Class 10th Board: 94.8% (Distinction)."
+    },
+    {
+      keywords: ["courses", "certifications", "certificate", "nptel", "isro", "iirs", "achievements", "hackathon"],
+      answer: "Courses, Certifications & Achievements:\n• NPTEL / Swayam: Programming in Modern C++ (IIT Kharagpur)\n• ISRO IIRS: Distance Learning Outreach Programme (In Progress)\n• DataForge 2026: Kharagpur Data Analytics Group, IIT Kharagpur\n• Hack Devengers 2.0: E-Cell IIT Bombay & Devengers\n• Hacktoberfest Hack Day Indore: PyData Indore\n• Academic Performance: B.Tech 1st Year with 8.45 CGPA at IPS Academy."
     },
     {
       keywords: ["internship", "hiring", "hire", "job", "opportunity", "placement"],
-      answer: "Yes! Neeraj is actively looking for software development and IT internships for 2026. He brings disciplined problem-solving in C++/Python, top academic rigor, and hands-on project building."
+      answer: "Yes! Neeraj is actively looking for software development and engineering internships for 2026. He brings disciplined problem solving in C++/Python, solid analytical rigor, and hands-on project building."
     },
     {
       keywords: ["contact", "email", "reach", "phone", "mobile", "number", "instagram", "insta"],
-      answer: "You can reach Neeraj directly:\n• Mobile: +91 8103537584\n• Email: narendraydv8103@gmail.com\n• Instagram: @narendraydvv\n• LinkedIn & GitHub links are available in the footer.\nHe is based in Indore, Madhya Pradesh, India."
+      answer: "You can reach Neeraj directly:\n• Mobile: +91 8103537584\n• Email: narendraydv8103@gmail.com\n• Instagram: @narendraydvv\n• GitHub: https://github.com/narendraydv8103\n• LinkedIn: https://www.linkedin.com/in/narendrayadav07/\nHe is based in Indore, Madhya Pradesh, India."
     }
   ]
 };

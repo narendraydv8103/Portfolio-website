@@ -7,8 +7,14 @@ import {
   Orbit,
   Code2,
   ArrowUpRight,
+  Terminal,
+  Cpu,
+  Database,
+  Wrench,
+  Layers,
 } from 'lucide-react';
 import { getSmoother } from '../components/utils/scrollSmoother';
+import { portfolioData } from '../data/portfolioData';
 
 interface ServiceCategory {
   id: string;
@@ -105,6 +111,8 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
     icon: Code2,
   },
 ];
+
+const SKILL_CATEGORY_ICONS = [Terminal, Cpu, Layout, Database, Sparkles, Wrench];
 
 export const StudioSkillsSpatial: React.FC = () => {
   const handleContactClick = (e: React.MouseEvent) => {
@@ -215,6 +223,67 @@ export const StudioSkillsSpatial: React.FC = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Categorized Technical Skills Grid */}
+        <div className="mb-14 pt-10 border-t border-white/10">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="font-sans font-semibold text-xs uppercase tracking-widest text-[#5eead4]">
+              TECHNICAL PROFICIENCY // CORE STACK
+            </span>
+            <div className="h-[1px] w-12 bg-white/10" />
+          </div>
+
+          <div className="max-w-3xl mb-8">
+            <h3 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight mb-2">
+              Categorized Skills &amp; Technologies
+            </h3>
+            <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
+              Real-world engineering tools, programming languages, and frameworks applied across my projects and coursework.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {portfolioData.skillsCategories.map((cat, idx) => {
+              const CatIcon = SKILL_CATEGORY_ICONS[idx % SKILL_CATEGORY_ICONS.length] || Layers;
+              return (
+                <div
+                  key={idx}
+                  className="p-5 sm:p-6 rounded-2xl bg-[#0e0e12]/80 border border-white/10 hover:border-teal-500/30 transition-all duration-300 backdrop-blur-md flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/5">
+                      <div className="flex items-center gap-2">
+                        <CatIcon className="w-4 h-4 text-[#5eead4]" />
+                        <span className="font-display font-bold text-base text-white">
+                          {cat.title}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-sans font-semibold text-[#5eead4] px-2 py-0.5 rounded bg-teal-500/10 border border-teal-500/20">
+                        0{idx + 1}
+                      </span>
+                    </div>
+
+                    <div className="space-y-2">
+                      {cat.skills.map((skill, sIdx) => (
+                        <div
+                          key={sIdx}
+                          className="flex items-center justify-between p-2 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-colors"
+                        >
+                          <span className="text-xs font-sans font-semibold text-white">
+                            {skill.name}
+                          </span>
+                          <span className="text-[11px] font-sans text-zinc-400">
+                            {skill.tag}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Closing Call-To-Action Banner */}

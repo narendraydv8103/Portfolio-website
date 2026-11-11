@@ -12,26 +12,7 @@ import { portfolioData } from '../data/portfolioData';
  * 2. Add its path "/images/gallery/filename.ext" to this array.
  * =========================================================================
  */
-const GALLERY_PHOTOS: string[] = [
-  '/images/gallery/IMG20251110064436.jpg',
-  '/images/gallery/IMG_20260118_232048.jpg',
-  '/images/gallery/IMG20251110072448.jpg',
-  '/images/gallery/IMG_20260902_161059.jpg',
-  '/images/gallery/IMG_20251111_024648.jpg',
-  '/images/gallery/IMG_20260118_232929.jpg',
-  '/images/gallery/IMG_20260912_184523.jpg',
-  '/images/gallery/IMG20251110081816.jpg',
-  '/images/gallery/IMG_1777.jpg',
-  '/images/gallery/IMG_20251210_183907_1.jpg',
-  '/images/gallery/IMG_20251210_202627.jpg',
-  '/images/gallery/IMG_20251220_202055.jpg',
-  '/images/gallery/IMG_20260324_103743.jpg',
-  '/images/gallery/IMG_20260413_133230.jpg',
-  '/images/gallery/IMG_3622.jpg',
-  '/images/gallery/IMG_3788.jpeg',
-  '/images/gallery/IMG_20260912_185225.jpg',
-  '/images/gallery/IMG_20260118_232200.jpg',
-];
+const GALLERY_PHOTOS: string[] = portfolioData.galleryPhotos.map((p) => p.src);
 
 const InstagramIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg

@@ -86,7 +86,7 @@ export const StudioAbout: React.FC = () => {
                   </span>
                 </div>
                 <p className="font-sans text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal">
-                  B.Tech Electrical &amp; Electronics Engineering student at IPS Academy, Indore. Secured 1st Rank in the EEE Department in my first year and received the Academic Topper Award.
+                  B.Tech Electrical &amp; Electronics Engineering student at IPS Academy, Indore with an 8.45 First-Year CGPA, focused on software development, problem solving, and modern web systems.
                 </p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export const StudioAbout: React.FC = () => {
                   <Award className="w-4 h-4" />
                   <span>Academic Award Certificate • Session 2025–2026</span>
                 </span>
-                <span className="text-[#5eead4] font-bold">1st Position Topper</span>
+                <span className="text-[#5eead4] font-bold">8.45 First-Year CGPA</span>
               </div>
               <img
                 src="/images/academic_certificate.jpg"
@@ -177,7 +177,7 @@ export const StudioAbout: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Award className="w-4 h-4 text-amber-400" />
                 <span className="text-xs font-sans font-medium text-zinc-300">
-                  8.95 CGPA • Department of EEE, IPS Academy
+                  8.45 CGPA • Department of EEE, IPS Academy
                 </span>
               </div>
               <a

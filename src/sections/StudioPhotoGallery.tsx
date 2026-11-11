@@ -1,31 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { portfolioData } from '../data/portfolioData';
 
-interface PhotoItem {
-  src: string;
-  alt: string;
-}
-
-const GALLERY_PHOTOS: PhotoItem[] = [
-  { src: '/images/gallery/IMG20251110064436.jpg', alt: 'Mountain peak scenic overlook' },
-  { src: '/images/gallery/IMG_20260118_232048.jpg', alt: 'Ambient cafe profile portrait' },
-  { src: '/images/gallery/IMG20251110072448.jpg', alt: 'Forested mountain valley view' },
-  { src: '/images/gallery/IMG_20260902_161059.jpg', alt: 'Architectural staircase portrait' },
-  { src: '/images/gallery/IMG_20251111_024648.jpg', alt: 'Historic fort hilltop view' },
-  { src: '/images/gallery/IMG_20260118_232929.jpg', alt: 'Warm cafe portrait with pampas' },
-  { src: '/images/gallery/IMG_20260912_184523.jpg', alt: 'Misty mountains and river stones' },
-  { src: '/images/gallery/IMG20251110081816.jpg', alt: 'Scenic mountain ridge trail' },
-  { src: '/images/gallery/IMG_1777.jpg', alt: 'Campus architectural portrait' },
-  { src: '/images/gallery/IMG_20251210_183907_1.jpg', alt: 'Evening cityscape skyline' },
-  { src: '/images/gallery/IMG_20251210_202627.jpg', alt: 'Night ambient street atmosphere' },
-  { src: '/images/gallery/IMG_20251220_202055.jpg', alt: 'City promenade evening lights' },
-  { src: '/images/gallery/IMG_20260324_103743.jpg', alt: 'Daytime outdoor landscape' },
-  { src: '/images/gallery/IMG_20260413_133230.jpg', alt: 'Green campus walkway' },
-  { src: '/images/gallery/IMG_3622.jpg', alt: 'Casual outdoor portrait' },
-  { src: '/images/gallery/IMG_3788.jpeg', alt: 'Warm twilight ambient moment' },
-  { src: '/images/gallery/IMG_20260912_185225.jpg', alt: 'Scenic misty winding mountain road' },
-  { src: '/images/gallery/IMG_20260118_232200.jpg', alt: 'Full-height indoor architectural portrait' },
-];
+const GALLERY_PHOTOS = portfolioData.galleryPhotos;
 
 export const StudioPhotoGallery: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
