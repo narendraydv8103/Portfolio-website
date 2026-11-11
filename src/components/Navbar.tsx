@@ -140,7 +140,7 @@ function SideNavResumeLink({
       style={{
         textDecoration: "none",
         display: "flex",
-        alignItems: "center",
+        alignItems: "flex-start",
         ...style,
       }}
       onClick={onClick}

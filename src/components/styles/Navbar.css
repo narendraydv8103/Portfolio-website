@@ -257,16 +257,16 @@
 .nav-link {
   background: none;
   border: none;
-  padding: 0.1rem 0;
+  padding: 0;
   text-align: left;
   font-family: var(--font-sans);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-size: clamp(28px, 3vw, 42px);
   font-weight: 600;
   line-height: 1.15;
   color: #eae5ec;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0;
   opacity: 0;
   transform: translateX(7vw);
@@ -277,6 +277,13 @@
   letter-spacing: -0.01em;
   font-variant-numeric: lining-nums;
   will-change: transform;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.nav-link + .nav-link {
+  margin-top: 14px;
 }
 
 .side-nav.active .nav-link {
@@ -291,11 +298,12 @@
 /* dot in front of sidebar links */
 .nav-link .side-dot {
   display: block;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #eae5ec;
   flex-shrink: 0;
+  margin-top: calc(0.575em - 3px);
   margin-right: 0;
   transform: scale(0) translateX(-12px);
   opacity: 0;
@@ -309,7 +317,7 @@
 .nav-link.active .side-dot {
   transform: scale(1) translateX(0);
   opacity: 1;
-  margin-right: 14px;
+  margin-right: 12px;
 }
 
 /* ── Social links ── */
@@ -350,10 +358,6 @@
     box-sizing: border-box;
     padding: 14vh 10vw 8vh;
     transform: translateX(100%);
-  }
-
-  .nav-link {
-    font-size: clamp(2.4rem, 13vw, 3.4rem);
   }
 
   .nav-heading {
