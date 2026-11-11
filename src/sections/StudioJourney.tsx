@@ -7,6 +7,145 @@ import { portfolioData, type Achievement } from '../data/portfolioData';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Clean inline canvas renderer for first page of PDF certificates (zero viewer controls)
+const PdfCanvasPreview: React.FC<{ url: string; title: string }> = ({ url, title }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let isCancelled = false;
+    let activeRenderTask: any = null;
+
+    setLoading(true);
+    setError(false);
+
+    const loadPdfJs = (): Promise<any> => {
+      if ((window as any).pdfjsLib) {
+        return Promise.resolve((window as any).pdfjsLib);
+      }
+      return new Promise((resolve, reject) => {
+        const existingScript = document.getElementById('pdfjs-cdn-script');
+        if (existingScript) {
+          existingScript.addEventListener('load', () => resolve((window as any).pdfjsLib));
+          existingScript.addEventListener('error', reject);
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.id = 'pdfjs-cdn-script';
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+        script.onload = () => {
+          const lib = (window as any).pdfjsLib;
+          if (lib) {
+            lib.GlobalWorkerOptions.workerSrc =
+              'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            resolve(lib);
+          } else {
+            reject(new Error('PDF.js failed to initialize'));
+          }
+        };
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    };
+
+    loadPdfJs()
+      .then(async (pdfjs: any) => {
+        if (isCancelled) return;
+        const loadingTask = pdfjs.getDocument({
+          url: encodeURI(url),
+          cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+          cMapPacked: true,
+        });
+        const pdf = await loadingTask.promise;
+        if (isCancelled) return;
+
+        // Render page 1 only
+        const page = await pdf.getPage(1);
+        if (isCancelled || !canvasRef.current) return;
+
+        // Use scale for crisp high-resolution rendering
+        const viewport = page.getViewport({ scale: 2 });
+        const canvas = canvasRef.current;
+        const context = canvas.getContext('2d');
+        if (!context) return;
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport,
+        };
+
+        activeRenderTask = page.render(renderContext);
+        await activeRenderTask.promise;
+
+        if (!isCancelled) {
+          setLoading(false);
+        }
+      })
+      .catch((err: any) => {
+        if (err?.name === 'RenderingCancelledException' || isCancelled) return;
+        console.error('Error rendering PDF preview on canvas:', err);
+        if (!isCancelled) {
+          setError(true);
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+      if (activeRenderTask && typeof activeRenderTask.cancel === 'function') {
+        try {
+          activeRenderTask.cancel();
+        } catch {
+          // ignore
+        }
+      }
+    };
+  }, [url]);
+
+  return (
+    <div className="relative w-full flex items-center justify-center min-h-[300px]">
+      {loading && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-zinc-400">
+          <div className="w-6 h-6 border-2 border-[#5eead4] border-t-transparent rounded-full animate-spin" />
+          <span className="text-xs font-sans">Rendering certificate preview...</span>
+        </div>
+      )}
+      <canvas
+        ref={canvasRef}
+        aria-label={`${title} Certificate preview`}
+        className={`max-h-[60vh] max-w-full object-contain rounded-xl transition-opacity duration-300 ${
+          loading ? 'opacity-0' : 'opacity-100 shadow-2xl'
+        }`}
+        style={{
+          display: error ? 'none' : 'block',
+          maxHeight: '60vh',
+          maxWidth: '100%',
+          objectFit: 'contain',
+        }}
+      />
+      {error && (
+        <div className="text-center p-6 text-zinc-400">
+          <p className="text-sm">Unable to render PDF preview inline.</p>
+          <a
+            href={encodeURI(url)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs font-sans text-[#5eead4] border border-white/10 transition-colors"
+          >
+            <span>Open in Tab to view</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const StudioJourney: React.FC = () => {
   const [selectedCertificate, setSelectedCertificate] = useState<Achievement | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -432,18 +571,22 @@ export const StudioJourney: React.FC = () => {
                 </p>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-white/10 bg-zinc-950 flex-1 min-h-[300px] flex items-center justify-center p-2">
+              <div className="rounded-2xl overflow-hidden border border-white/10 bg-zinc-950/90 flex-1 min-h-[300px] sm:min-h-[380px] flex items-center justify-center p-3 sm:p-5">
                 {selectedCertificate.certificateUrl?.toLowerCase().endsWith('.pdf') ? (
-                  <iframe
-                    src={encodeURI(selectedCertificate.certificateUrl)}
-                    title={`${selectedCertificate.title} Certificate`}
-                    className="w-full h-[55vh] rounded-xl border-0 bg-white"
+                  <PdfCanvasPreview
+                    url={selectedCertificate.certificateUrl}
+                    title={selectedCertificate.title}
                   />
                 ) : (
                   <img
                     src={encodeURI(selectedCertificate.certificateUrl || '')}
                     alt={`${selectedCertificate.title} Certificate`}
-                    className="w-full max-h-[60vh] object-contain rounded-xl"
+                    className="max-h-[60vh] max-w-full object-contain rounded-xl shadow-2xl"
+                    style={{
+                      maxHeight: '60vh',
+                      maxWidth: '100%',
+                      objectFit: 'contain',
+                    }}
                   />
                 )}
               </div>
