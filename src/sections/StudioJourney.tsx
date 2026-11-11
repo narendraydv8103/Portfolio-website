@@ -160,8 +160,8 @@ export const StudioJourney: React.FC = () => {
 
         {/* Top Section Header (Matching Reference Code Frame) */}
         <div className="flex flex-col items-center text-center space-y-4 mb-24">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
-            My learning <span className="font-light text-[#5eead4]">&amp;</span> <br />
+          <h2 className="text-4xl sm:text-6xl md:text-7xl heading-stylish font-display font-extrabold text-white tracking-tight leading-[1.05]">
+            My learning <span className="italic text-[#5eead4]">&amp;</span> <br />
             <span>journey</span>
           </h2>
 
@@ -200,7 +200,7 @@ export const StudioJourney: React.FC = () => {
                       <div className="journey-card p-6 sm:p-7 group">
                         <div className="flex items-start justify-between gap-4 mb-2">
                           <div>
-                            <h3 className="text-base sm:text-lg font-display font-bold text-white group-hover:text-[#5eead4] transition-colors">
+                            <h3 className="text-base sm:text-lg font-sans font-bold text-white group-hover:text-[#5eead4] transition-colors">
                               {milestone.title}
                             </h3>
                             <span className="text-xs font-sans font-medium text-[#5eead4] opacity-90 block mt-0.5">
@@ -209,7 +209,7 @@ export const StudioJourney: React.FC = () => {
                           </div>
 
                           {/* Year Badge */}
-                          <span className="text-2xl sm:text-3xl font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#5eead4] to-[#67e8f9] tracking-tight shrink-0">
+                          <span className="text-2xl sm:text-3xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#5eead4] to-[#67e8f9] tracking-tight shrink-0">
                             {milestone.year}
                           </span>
                         </div>
@@ -237,7 +237,7 @@ export const StudioJourney: React.FC = () => {
             <span className="text-xs font-sans font-semibold tracking-widest uppercase text-[#5eead4]">
               VERIFIED RECOGNITION &amp; LEARNING
             </span>
-            <h3 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight">
+            <h3 className="text-3xl sm:text-5xl heading-stylish font-display font-black text-white tracking-tight">
               Honors, Certifications &amp; Courses
             </h3>
             <p className="text-xs sm:text-sm text-zinc-400 max-w-lg font-sans">
@@ -285,7 +285,7 @@ export const StudioJourney: React.FC = () => {
                     </div>
                   </div>
 
-                  <h4 className="text-lg sm:text-xl font-display font-bold text-white group-hover:text-[#5eead4] transition-colors mb-1.5">
+                  <h4 className="text-lg sm:text-xl font-sans font-bold text-white group-hover:text-[#5eead4] transition-colors mb-1.5">
                     {item.title}
                   </h4>
 
@@ -424,7 +424,7 @@ export const StudioJourney: React.FC = () => {
               </button>
 
               <div>
-                <h3 className="text-lg sm:text-2xl font-display font-bold text-white">
+                <h3 className="text-lg sm:text-2xl font-sans font-bold text-white">
                   {selectedCertificate.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-400 font-sans font-medium mt-0.5">

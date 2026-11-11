@@ -55,7 +55,7 @@ export const StudioProjectModal: React.FC<StudioProjectModalProps> = ({ project,
             </span>
           </div>
 
-          <h3 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+          <h3 className="text-2xl sm:text-4xl font-sans font-bold text-white tracking-tight">
             {project.title}
           </h3>
           <p className="text-sm font-sans font-medium text-zinc-300">
@@ -185,7 +185,7 @@ export const StudioProjectModal: React.FC<StudioProjectModalProps> = ({ project,
               {project.interactiveData.metrics.map((m, idx) => (
                 <div key={idx} className="p-4 rounded-xl bg-zinc-950/80 border border-white/10 text-center">
                   <span className="text-[10px] font-sans font-semibold text-zinc-400 uppercase block">{m.label}</span>
-                  <span className="text-lg sm:text-xl font-display font-bold text-white block mt-1">{m.value}</span>
+                  <span className="text-lg sm:text-xl font-sans font-bold text-white block mt-1">{m.value}</span>
                 </div>
               ))}
             </div>

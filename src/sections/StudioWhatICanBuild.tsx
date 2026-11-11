@@ -78,7 +78,7 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
 
         {/* Card Header & Description */}
         <div>
-          <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight leading-[1.1] mb-1">
+          <h3 className="font-sans font-bold text-xl sm:text-2xl text-white tracking-tight leading-[1.1] mb-1">
             {service.titleLine1}
             {service.titleLine2 && (
               <>
@@ -141,7 +141,7 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
         className="what-i-do-mobile relative py-20 px-6 sm:px-10 flex flex-col justify-center min-h-[90vh]"
       >
         <div className="max-w-2xl mx-auto w-full space-y-8">
-          <h2 className="font-display font-black text-5xl sm:text-6xl text-white uppercase tracking-tight leading-[0.95]">
+          <h2 className="heading-stylish font-display font-black text-5xl sm:text-6xl text-white uppercase tracking-tight leading-[0.95]">
             WHAT
             <br />
             I DO
@@ -158,7 +158,7 @@ export const StudioWhatICanBuild: React.FC<StudioWhatICanBuildProps> = ({ isDesk
     <div className="what-i-do-desktop pointer-events-none fixed inset-0 z-[65] flex items-center justify-between px-6 sm:px-10 lg:px-14 xl:px-16 select-none">
       {/* Left side: Bold Section Heading */}
       <div className="what-i-do-left pointer-events-auto flex flex-col justify-center max-w-[280px] lg:max-w-[340px]">
-        <h2 className="what-i-do-heading font-display font-black text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tighter text-white uppercase leading-[0.92]">
+        <h2 className="what-i-do-heading heading-stylish font-display font-black text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tighter text-white uppercase leading-[0.92]">
           WHAT
           <br />
           I DO

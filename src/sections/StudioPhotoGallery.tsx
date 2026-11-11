@@ -204,8 +204,8 @@ export const StudioPhotoGallery: React.FC = () => {
 
         {/* Section Header Editorial */}
         <div className="flex flex-col items-center text-center space-y-4 mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
-            Life, Lens <span className="font-light text-[#5eead4]">&amp;</span> <br />
+          <h2 className="text-4xl sm:text-6xl md:text-7xl heading-stylish font-display font-extrabold text-white tracking-tight leading-[1.05]">
+            Life, Lens <span className="italic text-[#5eead4]">&amp;</span> <br />
             <span>Perspectives</span>
           </h2>
           <p className="text-xs sm:text-sm text-zinc-400 max-w-lg font-sans">

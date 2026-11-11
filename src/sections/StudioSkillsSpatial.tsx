@@ -151,7 +151,7 @@ export const StudioSkillsSpatial: React.FC = () => {
 
         {/* Section Heading & Subtitle */}
         <div className="max-w-3xl mb-14">
-          <h2 className="text-3xl sm:text-5xl font-display font-black text-white tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-5xl heading-stylish font-display font-black text-white tracking-tight mb-3">
             What Can I Build?
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
@@ -196,7 +196,7 @@ export const StudioSkillsSpatial: React.FC = () => {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight leading-tight mb-2.5 group-hover:text-teal-100 transition-colors">
+                  <h3 className="font-sans font-bold text-xl sm:text-2xl text-white tracking-tight leading-tight mb-2.5 group-hover:text-teal-100 transition-colors">
                     {category.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed mb-6">
@@ -235,7 +235,7 @@ export const StudioSkillsSpatial: React.FC = () => {
           </div>
 
           <div className="max-w-3xl mb-8">
-            <h3 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight mb-2">
+            <h3 className="text-2xl sm:text-4xl heading-stylish font-display font-extrabold text-white tracking-tight mb-2">
               Categorized Skills &amp; Technologies
             </h3>
             <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
@@ -255,7 +255,7 @@ export const StudioSkillsSpatial: React.FC = () => {
                     <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/5">
                       <div className="flex items-center gap-2">
                         <CatIcon className="w-4 h-4 text-[#5eead4]" />
-                        <span className="font-display font-bold text-base text-white">
+                        <span className="font-sans font-bold text-base text-white">
                           {cat.title}
                         </span>
                       </div>
@@ -289,7 +289,7 @@ export const StudioSkillsSpatial: React.FC = () => {
         {/* Closing Call-To-Action Banner */}
         <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-teal-500/[0.08] via-zinc-900/80 to-emerald-500/[0.08] border border-white/10 backdrop-blur-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_16px_40px_rgba(0,0,0,0.4)]">
           <div className="space-y-1.5">
-            <h4 className="font-display font-bold text-xl sm:text-2xl text-white tracking-tight">
+            <h4 className="font-sans font-bold text-xl sm:text-2xl text-white tracking-tight">
               Have an idea? Let’s build it together.
             </h4>
             <p className="text-xs sm:text-sm text-zinc-400 font-sans max-w-xl leading-relaxed">

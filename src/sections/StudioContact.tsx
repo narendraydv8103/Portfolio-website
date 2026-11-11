@@ -133,9 +133,9 @@ export const StudioContact: React.FC = () => {
               </div>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-black text-white tracking-tight leading-[1.05]">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl heading-stylish font-display font-black text-white tracking-tight leading-[1.05]">
               Let’s Build Something <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5eead4] via-zinc-200 to-white">
+              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#5eead4] via-zinc-200 to-white">
                 Meaningful.
               </span>
             </h2>
@@ -149,7 +149,7 @@ export const StudioContact: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <a
               href={`mailto:${portfolioData.profile.email}?subject=Internship%20%2F%20Collaboration%20Inquiry`}
-              className="group relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-white text-zinc-950 font-display font-extrabold text-base sm:text-lg flex flex-col items-center justify-center text-center shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-zinc-200"
+              className="group relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-white text-zinc-950 font-sans font-bold text-base sm:text-lg flex flex-col items-center justify-center text-center shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-zinc-200"
             >
               <span>Get in touch</span>
               <ArrowUpRight className="w-5 h-5 mt-1 text-zinc-600 group-hover:text-zinc-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
@@ -378,7 +378,7 @@ export const StudioContact: React.FC = () => {
                     <Images className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="font-display font-bold text-base sm:text-lg text-white">Gallery</span>
+                    <span className="font-sans font-bold text-base sm:text-lg text-white">Gallery</span>
                     <span className="ml-2 font-sans text-xs text-zinc-400">
                       ({GALLERY_PHOTOS.length} {GALLERY_PHOTOS.length === 1 ? 'photo' : 'photos'})
                     </span>

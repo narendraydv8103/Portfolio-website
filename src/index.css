@@ -3,13 +3,13 @@
 @theme {
   --font-display: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
   --font-serif: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
-  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  --font-sans: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Aliases to ensure complete compatibility across existing components */
   --font-heading: var(--font-display);
   --font-body: var(--font-sans);
-  --font-syne: var(--font-display);
+  --font-syne: var(--font-sans);
 
   --color-studio-bg: #08080a;
   --color-studio-surface: #101014;
@@ -28,12 +28,12 @@
 :root {
   --font-display: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
   --font-serif: "Fraunces", "Noto Serif Devanagari", Georgia, "Times New Roman", serif;
-  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  --font-sans: "Satoshi", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --font-heading: var(--font-display);
   --font-body: var(--font-sans);
-  --font-syne: var(--font-display);
+  --font-syne: var(--font-sans);
 
   font-family: var(--font-sans);
   font-weight: 400;
@@ -59,16 +59,26 @@
   --sidebarW: 0px;
 }
 
+/* Base headings default to Satoshi (clean, modern, sans-serif) */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-.font-display,
-.font-heading,
-.font-serif,
-.font-syne {
+h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Stylish display headings — ONLY for the 9 designated hero / section titles & marquee */
+.heading-stylish,
+.font-display {
   font-family: var(--font-display) !important;
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -622,10 +632,10 @@ body {
 }
 
 .hero-right-heading {
-  font-family: var(--font-heading) !important;
-  font-style: italic;
+  font-family: var(--font-sans) !important;
+  font-style: normal;
   font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: #ffffff;

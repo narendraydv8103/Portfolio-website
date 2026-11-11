@@ -295,8 +295,8 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
 
         {/* Centered Headline matching Reference Video Frame 00:22 */}
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold text-white tracking-tight">
-            My <span className="text-[#5eead4] drop-shadow-[0_0_30px_rgba(94,234,212,0.45)]">Work</span>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl heading-stylish font-display font-extrabold text-white tracking-tight">
+            My <span className="italic text-[#5eead4] drop-shadow-[0_0_30px_rgba(94,234,212,0.45)]">Work</span>
           </h2>
           <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-[#5eead4] to-transparent mt-4" />
         </div>
@@ -360,7 +360,7 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
               </div>
 
               <div>
-                <h3 className="text-2xl sm:text-4xl font-display font-extrabold text-white tracking-tight mb-2">
+                <h3 className="text-2xl sm:text-4xl font-sans font-bold text-white tracking-tight mb-2">
                   {currentProject.title}
                 </h3>
                 <p className="text-sm font-sans font-medium text-zinc-300">
@@ -379,7 +379,7 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
                     <span className="text-[9px] font-sans font-semibold text-zinc-400 uppercase block">
                       {m.label}
                     </span>
-                    <span className="text-xs sm:text-sm font-display font-bold text-white block mt-0.5">
+                    <span className="text-xs sm:text-sm font-sans font-bold text-white block mt-0.5">
                       {m.value}
                     </span>
                   </div>
@@ -555,7 +555,7 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
                           />
                         </div>
                         {activeFlow.screenshotCaption && (
-                          <p className="text-[11px] font-sans text-zinc-400 text-center italic">
+                          <p className="text-[11px] font-sans text-zinc-400 text-center">
                             {activeFlow.screenshotCaption}
                           </p>
                         )}
@@ -736,13 +736,13 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
                     <div className="grid grid-cols-2 gap-3 my-auto">
                       <div className="p-3 rounded-xl bg-zinc-950/80 border border-amber-500/20">
                         <span className="text-[10px] font-sans font-semibold text-amber-400 uppercase block">ACTIVE QUEST</span>
-                        <span className="text-xs font-display font-bold text-white block mt-0.5">The Algorithmic Spire</span>
+                        <span className="text-xs font-sans font-bold text-white block mt-0.5">The Algorithmic Spire</span>
                         <span className="text-[10px] text-zinc-400 block mt-1">C++ Rigor &amp; Competitive DSA</span>
                       </div>
 
                       <div className="p-3 rounded-xl bg-zinc-950/80 border border-amber-500/20">
                         <span className="text-[10px] font-sans font-semibold text-amber-400 uppercase block">EQUIPPED RELIC</span>
-                        <span className="text-xs font-display font-bold text-white block mt-0.5">Tome of Circuits &amp; Logic</span>
+                        <span className="text-xs font-sans font-bold text-white block mt-0.5">Tome of Circuits &amp; Logic</span>
                         <span className="text-[10px] text-zinc-400 block mt-1">Electrical &amp; Electronics Core</span>
                       </div>
                     </div>
@@ -865,7 +865,7 @@ export const StudioProjectsJourney: React.FC<StudioProjectsJourneyProps> = ({
         <div className="flex justify-center pt-6">
           <button
             onClick={() => setSelectedModalProject(currentProject)}
-            className="w-32 h-32 rounded-full bg-zinc-950 border border-white/15 text-white font-display font-bold text-xs uppercase tracking-widest hover:scale-105 hover:border-[#5eead4] hover:text-[#5eead4] transition-all shadow-2xl flex flex-col items-center justify-center gap-1 group"
+            className="w-32 h-32 rounded-full bg-zinc-950 border border-white/15 text-white font-sans font-bold text-xs uppercase tracking-widest hover:scale-105 hover:border-[#5eead4] hover:text-[#5eead4] transition-all shadow-2xl flex flex-col items-center justify-center gap-1 group"
           >
             <span>MORE</span>
             <span>WORK</span>

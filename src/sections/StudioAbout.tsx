@@ -33,7 +33,7 @@ export const StudioAbout: React.FC = () => {
           {/* LEFT COLUMN */}
           <div className="lg:col-span-7 flex flex-col">
             {/* 1. Main Heading (Exact font size, weight, line-height & styling preserved) */}
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.15] tracking-tight mb-4 sm:mb-5">
+            <h2 className="heading-stylish font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.15] tracking-tight mb-4 sm:mb-5">
               Turning ideas into practical software, exploring AI, and building with curiosity.
             </h2>
 
@@ -46,17 +46,17 @@ export const StudioAbout: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-xl bg-zinc-900/60 border border-white/10">
                 <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-wider">01 / CORE</span>
-                <span className="text-sm font-display font-bold text-white block">C++ &amp; Python</span>
+                <span className="text-sm font-sans font-bold text-white block">C++ &amp; Python</span>
                 <span className="text-xs text-zinc-400 mt-1 block">OOP &amp; Problem Solving</span>
               </div>
               <div className="p-4 rounded-xl bg-zinc-900/60 border border-white/10">
                 <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-wider">02 / EXPLORING</span>
-                <span className="text-sm font-display font-bold text-white block">React &amp; TS</span>
+                <span className="text-sm font-sans font-bold text-white block">React &amp; TS</span>
                 <span className="text-xs text-zinc-400 mt-1 block">Modern Web UI</span>
               </div>
               <div className="p-4 rounded-xl bg-zinc-900/60 border border-white/10">
                 <span className="text-xs font-sans text-[#5eead4] uppercase block font-semibold mb-1 tracking-wider">03 / APPLIED AI</span>
-                <span className="text-sm font-display font-bold text-white block">AI/ML &amp; Voice</span>
+                <span className="text-sm font-sans font-bold text-white block">AI/ML &amp; Voice</span>
                 <span className="text-xs text-zinc-400 mt-1 block">Automation Bots</span>
               </div>
             </div>
@@ -78,7 +78,7 @@ export const StudioAbout: React.FC = () => {
               {/* Verified Description beneath the photo */}
               <div className="w-full pt-4 px-2 pb-1 space-y-2">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-display font-bold text-base text-white">
+                  <span className="font-sans font-bold text-base text-white">
                     Narendra Singh Yadav
                   </span>
                   <span className="text-[10px] font-sans font-semibold px-2.5 py-0.5 rounded-full bg-teal-500/15 text-[#5eead4] border border-teal-500/30">
@@ -113,7 +113,7 @@ export const StudioAbout: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <div className="text-3xl xl:text-4xl font-display font-extrabold text-white tracking-tight group-hover:text-[#5eead4] transition-colors">
+                  <div className="text-3xl xl:text-4xl font-sans font-bold text-white tracking-tight group-hover:text-[#5eead4] transition-colors">
                     {stat.value}
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export const StudioAbout: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-white">
+              <h3 className="text-2xl sm:text-3xl font-sans font-bold text-white">
                 Narendra Singh Yadav (Neeraj)
               </h3>
               <p className="text-xs sm:text-sm font-sans font-medium text-zinc-400 mt-1">
@@ -183,7 +183,7 @@ export const StudioAbout: React.FC = () => {
               <a
                 href="#contact"
                 onClick={() => setModalOpen(false)}
-                className="px-5 py-2 rounded-full bg-white text-zinc-950 font-display text-xs font-bold hover:bg-zinc-200 transition-colors"
+                className="px-5 py-2 rounded-full bg-white text-zinc-950 font-sans text-xs font-bold hover:bg-zinc-200 transition-colors"
               >
                 Get in Touch
               </a>
