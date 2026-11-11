@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, Clock, Phone, Images, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { Mail, Copy, Check, ArrowUpRight, Clock, Phone, Images, X, ChevronLeft, ChevronRight, ZoomIn, FileText } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 /**
@@ -203,6 +203,23 @@ export const StudioContact: React.FC = () => {
                 {copiedPhone ? <Check className="w-3.5 h-3.5 text-teal-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
             </div>
+
+            {/* Resume Download Pill */}
+            <a
+              href="/Narendra-Singh-Yadav-Resume.pdf"
+              download="Narendra-Singh-Yadav-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 rounded-full bg-zinc-900 border border-white/10 text-xs sm:text-sm font-sans font-medium text-zinc-200 hover:text-white hover:border-[#5eead4]/40 hover:text-[#5eead4] transition-all flex items-center gap-2 group tracking-normal"
+              style={{ fontFamily: 'var(--font-body)' }}
+              title="Download Narendra's Resume"
+            >
+              <FileText className="w-4 h-4 text-[#5eead4] group-hover:scale-110 transition-transform" />
+              <span className="font-sans font-medium tracking-normal" style={{ fontFamily: 'var(--font-body)' }}>
+                Resume
+              </span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-[#5eead4] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </a>
           </div>
 
           {/* Social Links */}

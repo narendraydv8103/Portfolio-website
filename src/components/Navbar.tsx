@@ -18,9 +18,9 @@ const socials = [
   { label: "Email", href: portfolioData.profile.emailUrl },
 ];
 
-// Magnetic hover — attaches to a button element
-function useMagnetic(strength = 0.35) {
-  const ref = useRef<HTMLButtonElement>(null);
+// Magnetic hover — attaches to a button or anchor element
+function useMagnetic<T extends HTMLElement = HTMLButtonElement>(strength = 0.35) {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -60,7 +60,7 @@ function TopNavBtn({
   onClick: (e: React.MouseEvent) => void;
   isActive?: boolean;
 }) {
-  const ref = useMagnetic(0.3);
+  const ref = useMagnetic<HTMLButtonElement>(0.3);
   return (
     <button
       ref={ref}
@@ -71,6 +71,25 @@ function TopNavBtn({
       {label}
       <span className="top-active-dot" aria-hidden="true" />
     </button>
+  );
+}
+
+// Top-bar Resume download link with dot hover + magnetic
+function TopNavResumeLink() {
+  const ref = useMagnetic<HTMLAnchorElement>(0.3);
+  return (
+    <a
+      ref={ref}
+      href="/Narendra-Singh-Yadav-Resume.pdf"
+      download="Narendra-Singh-Yadav-Resume.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="top-nav-link"
+      style={{ textDecoration: "none" }}
+    >
+      Resume
+      <span className="top-active-dot" aria-hidden="true" />
+    </a>
   );
 }
 
@@ -86,7 +105,7 @@ function SideNavBtn({
   style?: React.CSSProperties;
   isActive?: boolean;
 }) {
-  const ref = useMagnetic(0.18);
+  const ref = useMagnetic<HTMLButtonElement>(0.18);
   return (
     <button
       ref={ref}
@@ -98,6 +117,37 @@ function SideNavBtn({
       <span className="side-dot" />
       {label}
     </button>
+  );
+}
+
+// Sidebar resume link with dot indicator + magnetic
+function SideNavResumeLink({
+  style,
+  onClick,
+}: {
+  style?: React.CSSProperties;
+  onClick: () => void;
+}) {
+  const ref = useMagnetic<HTMLAnchorElement>(0.18);
+  return (
+    <a
+      ref={ref}
+      href="/Narendra-Singh-Yadav-Resume.pdf"
+      download="Narendra-Singh-Yadav-Resume.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="nav-link"
+      style={{
+        textDecoration: "none",
+        display: "flex",
+        alignItems: "center",
+        ...style,
+      }}
+      onClick={onClick}
+    >
+      <span className="side-dot" />
+      Resume
+    </a>
   );
 }
 
@@ -297,6 +347,7 @@ export const Navbar = () => {
             onClick={() => handleNav("Contact", "#contact")}
             isActive={activeItem === "Contact"}
           />
+          <TopNavResumeLink />
         </nav>
       </header>
 
@@ -361,6 +412,10 @@ export const Navbar = () => {
               isActive={activeItem === item.label}
             />
           ))}
+          <SideNavResumeLink
+            style={{ transitionDelay: isMenuOpen ? `${0.05 + navMenuItems.length * 0.05}s` : "0s" }}
+            onClick={closeMenu}
+          />
         </div>
 
         <div className="nav-section nav-socials">
