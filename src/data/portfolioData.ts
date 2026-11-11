@@ -342,7 +342,7 @@ export const portfolioData = {
       title: "Portfolio Website",
       category: "Spatial Web & 3D Interactive Design",
       tagline: "Interactive 3D Engineering Portfolio Showcase",
-      statusTag: "In development",
+      statusTag: "LIVE",
       description: "Custom-engineered interactive 3D portfolio showcasing real software engineering projects through spatial design. Built with Three.js graphics, scroll-choreographed lighting, custom typography, an on-site portfolio assistant, and deep-dive technical architecture inspection.",
       visualTheme: "portfolio",
       accentColor: "#5eead4", // Signature spatial turquoise
@@ -357,11 +357,11 @@ export const portfolioData = {
       ],
       architecture: "Client-side spatial web application orchestrating Three.js WebGL scenes, Lenis smooth-scroll physics, GSAP timeline triggers, and responsive glassmorphic interfaces.",
       interactiveData: {
-        badge: "IN DEVELOPMENT",
+        badge: "LIVE",
         metrics: [
           { label: "FRONTEND", value: "React 19" },
           { label: "GRAPHICS", value: "Three.js" },
-          { label: "STATUS", value: "Active Dev" }
+          { label: "STATUS", value: "Live" }
         ],
         detailItems: [
           "Engine: Three.js WebGL & custom scene lighting",

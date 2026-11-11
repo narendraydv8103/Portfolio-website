@@ -42,7 +42,7 @@ interface ProjectFlowData {
 const projectFlows: Record<string, ProjectFlowData> = {
   portfolio: {
     engineName: 'PORTFOLIO RUNTIME // SPATIAL ARCHITECTURE',
-    statusBadge: 'IN DEVELOPMENT',
+    statusBadge: 'LIVE',
     guarantee: 'Real-time Three.js WebGL & Lenis Scroll Physics',
     icon: Sparkles,
     steps: [
