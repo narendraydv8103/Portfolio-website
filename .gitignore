@@ -25,3 +25,15 @@ dist-ssr
 
 # Unrelated project directories
 projects/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Documents and private source files
+*.docx
+
+# Local audits and screenshots
+audit/
+screenshots/
