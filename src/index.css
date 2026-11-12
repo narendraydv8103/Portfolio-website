@@ -607,6 +607,53 @@ body {
   transform: translateY(-2px);
 }
 
+/* ── What I Do: Skillset & Tools Hover Panel & Responsive Chevron ── */
+.skillset-panel-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skillset-panel-wrapper.open {
+  grid-template-rows: 1fr;
+}
+
+.skillset-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skillset-panel-wrapper.open .skillset-panel-inner {
+  opacity: 1;
+}
+
+/* Chevron hidden on mouse/hover devices, visible on touch/no-hover devices and mobile layout */
+.skillset-chevron {
+  display: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .skillset-chevron {
+    display: flex;
+  }
+}
+
+.what-i-do-mobile .skillset-chevron {
+  display: flex;
+}
+
+/* Viewport height safety for compact desktop screens (1280x720, 1366x768) */
+@media screen and (min-width: 1025px) and (max-height: 760px) {
+  .what-i-do-right {
+    gap: 0.75rem !important;
+  }
+  .what-i-do-card {
+    padding: 1.25rem 1.5rem !important;
+  }
+}
+
 /* ── Hero Right-Side Introductory Content (Studio Lead) ── */
 .hero-right-container {
   display: flex;
